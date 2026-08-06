@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
-import { HomeWinsGallery } from "@/components/home-wins-gallery";
+import { HomeMosaic } from "@/components/home-mosaic";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
 import { StatBand } from "@/components/stat-band";
@@ -41,8 +41,6 @@ export default function HomePage() {
 
       <StatBand />
 
-      <HomeWinsGallery />
-
       <Section tone="inverse">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
@@ -65,6 +63,8 @@ export default function HomePage() {
           </div>
         </div>
       </Section>
+
+      <HomeMosaic />
     </>
   );
 }

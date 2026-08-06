@@ -151,6 +151,28 @@ export const projects: Project[] = [
     publicationIds: ["shah2025safe"],
     image: "/images/publications/shah2025safe.jpg",
   },
+  {
+    id: "codevista-3d-runner",
+    title: "CodeVista · 3D Runner Learning Lab",
+    summary:
+      "Interactive student coding platform with XP progress, weekly programs and a live 3D runner — Pause, Next, Replay and Run for hands-on practice.",
+    description:
+      "CodeVista 3D Runner is an educational coding lab led by Asim Irshad (Lecturer, Beaconhouse National University). Students complete weekly programs, earn XP toward skill goals, and practise in a live 3D runner with Pause, Next, Replay and Run controls plus a source panel for the current exercise. Built for classroom and self-paced learning so beginners can see code behaviour while they write it. Live demo: https://codevista-3d-runner.vercel.app/",
+    area: "artificial-intelligence",
+    relatedAreas: ["data-science", "deep-learning"],
+    fundingAgency: "Asim Irshad · Beaconhouse National University (BNU) · Nexus Research Lab affiliate",
+    supervisorId: "a-irshad",
+    teamIds: ["a-irshad"],
+    start: "2025",
+    end: "2026",
+    status: "Ongoing",
+    stack: ["Flutter", "3D", "Educational games", "XP systems", "Web"],
+    publicationIds: [],
+    image: "/images/projects/glasslens.webp",
+    links: {
+      demo: "https://codevista-3d-runner.vercel.app/",
+    },
+  },
 ];
 
 export const projectsById = new Map(projects.map((project) => [project.id, project]));

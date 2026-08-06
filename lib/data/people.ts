@@ -160,15 +160,24 @@ export const people: Person[] = [
   {
     id: "a-irshad",
     name: "Asim Irshad",
-    role: "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU",
+    role: "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU | CodeVista 3D Runner",
     group: "affiliate-faculty",
     affiliation: "Lecturer · Beaconhouse National University (BNU), Lahore",
-    association: "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU",
-    interests: ["Flutter", "Mobile development", "Cross-platform apps", "Teaching"],
-    bio: "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU",
+    association:
+      "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU | CodeVista 3D Runner",
+    interests: [
+      "Flutter",
+      "Mobile development",
+      "Cross-platform apps",
+      "Teaching",
+      "Educational games",
+      "3D learning",
+    ],
+    bio: "Senior Flutter developer | 4+ year Experience | Lecturer @ BNU. Builds CodeVista 3D Runner — an interactive student coding lab with XP, weekly programs and a live 3D runner for practice.",
     photo: "/people/a-irshad.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/asim-irshad-18a61bab/",
+      website: "https://codevista-3d-runner.vercel.app/",
     },
   },
   {
