@@ -18,6 +18,7 @@ const authorToId: Record<string, string> = {
   "ameera arif": "a-arif",
   "asif farooq": "a-farooq",
   "asim irshad": "a-irshad",
+  "nadia khushi": "n-khushi",
 };
 
 export type CollaboratorChip = {
@@ -104,6 +105,15 @@ export const naumanHighlights = [
       "Asif Farooq",
       "Asim Irshad",
     ],
+  },
+  {
+    id: "hl-fihps",
+    title: "FCCU · FIHPS Society Project Manager",
+    detail:
+      "May 2021 – May 2022 · Project Manager with FIHPS / College History Society under Associate Professor Nadia Khushi. Organised the Iqbal Day interview with Rector Sir Dr. Jonathan S. Addleton — featured on the FCCU Official YouTube Channel.",
+    image: "/images/gallery/presentation-01.webp",
+    kind: "Society / Social services",
+    collaboratorNames: ["Nadia Khushi"],
   },
 ] as const;
 

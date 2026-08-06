@@ -87,8 +87,9 @@ export const people: Person[] = [
       "Explainable AI",
       "PIFuHD / Metaverse",
       "Flutter",
+      "Student societies",
     ],
-    bio: "Data Analyst | Digital Twin | PIFuHD Metaverse | Flutter App developer",
+    bio: "Data Analyst | Digital Twin | PIFuHD Metaverse | Flutter App developer. Project Manager for FIHPS / College History Society work at Forman Christian College (FCCU) with teacher Nadia Khushi (May 2021 – May 2022), including the Iqbal Day interview with Rector Sir Dr. Jonathan S. Addleton featured on the FCCU Official YouTube Channel.",
     photo: "/people/n-shah.jpg",
     links: {
       email: "naumanirshadalishah@gmail.com",
@@ -178,6 +179,26 @@ export const people: Person[] = [
     links: {
       linkedin: "https://www.linkedin.com/in/asim-irshad-18a61bab/",
       website: "https://codevista-3d-runner.vercel.app/",
+    },
+  },
+  {
+    id: "n-khushi",
+    name: "Nadia Khushi",
+    role: "Associate Professor · Forman Christian College (A Chartered University), Lahore",
+    group: "affiliate-faculty",
+    affiliation: "Associate Professor · FCCU Lahore",
+    association:
+      "Associate Professor · Forman Christian College (A Chartered University) · Full-time since Jan 2015",
+    interests: [
+      "Teaching",
+      "College history",
+      "Student societies",
+      "Social services",
+      "FIHPS Society",
+    ],
+    bio: "Associate Professor at Forman Christian College (A Chartered University), Lahore (FCCU), full-time since January 2015. Teacher and mentor for student society and college-history work, including the FIHPS Society programme with Nauman Irshad Ali Shah as Project Manager.",
+    links: {
+      linkedin: "https://www.linkedin.com/in/nadia-khushi-3b2b253a/",
     },
   },
   {

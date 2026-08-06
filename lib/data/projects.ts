@@ -158,6 +158,24 @@ export const projects: Project[] = [
       demo: "https://codevista-3d-runner.vercel.app/",
     },
   },
+  {
+    id: "fihps-fccu",
+    title: "FIHPS Society · College History Society (FCCU)",
+    summary:
+      "Project management and volunteer work with the FIHPS / College History Society at Forman Christian College under teacher Nadia Khushi — including the Iqbal Day interview with Rector Sir Dr. Jonathan S. Addleton.",
+    description:
+      "From May 2021 to May 2022, Nauman Irshad Ali Shah served as Project Manager with the FIHPS Society (College History Society) at Forman Christian College (A Chartered University), Lahore, under Associate Professor Nadia Khushi. The work covered society management and social-services volunteering. A highlight was organising and conducting an interview with Sir Dr. Jonathan S. Addleton, Rector of FCCU, for Iqbal Day — featured on the FCCU Official YouTube Channel as part of FIHPS Society’s Tribute to Allama Iqbal on his 144th birth anniversary, with Nauman’s name credited on the official FCCU YouTube page.",
+    area: "data-science",
+    relatedAreas: ["artificial-intelligence"],
+    supervisorId: "n-khushi",
+    teamIds: ["n-shah", "n-khushi"],
+    start: "2021",
+    end: "2022",
+    status: "Completed",
+    stack: ["Project management", "Student society", "Event production", "Social services"],
+    publicationIds: [],
+    image: "/images/gallery/presentation-01.webp",
+  },
 ];
 
 export const projectsById = new Map(projects.map((project) => [project.id, project]));
