@@ -71,7 +71,6 @@ export const navigation = [
   { label: "Upcoming Work", href: "/upcoming" },
   { label: "Publications", href: "/publications" },
   { label: "Conference", href: "/conference" },
-  { label: "News", href: "/news" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ] as const;
