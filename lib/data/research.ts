@@ -108,7 +108,7 @@ export const researchAreas: ResearchArea[] = [
     icon: "eye",
     image: "/images/research/computer-vision.webp",
     overview: [
-      "Computer vision at NRL covers person pose and monocular depth (PoseDepth-CMP), Metaverse / PIFuHD virtual try-on for Smart Fitao AI, and plant disease recognition with ResNet50 and Grad-CAM for Agri Asia 2026.",
+      "Computer vision at Nauman Irshad Lab covers person pose and monocular depth (PoseDepth-CMP), Metaverse / PIFuHD virtual try-on for Smart Fitao AI, and plant disease recognition with ResNet50 and Grad-CAM for Agri Asia 2026.",
       "Student researchers co-author papers and ship demos presented through UCP ORIC to LCCI and Agri Asia.",
     ],
     objectives: [
@@ -164,7 +164,7 @@ export const researchAreas: ResearchArea[] = [
     icon: "cube",
     image: "/images/research/deep-learning.webp",
     overview: [
-      "Deep learning at NRL is applied, not abstract: ImageNet-pretrained ResNet50 for 15 plant diseases with Grad-CAM explanations, reported at Agri Asia 2026 with 90.09% accuracy.",
+      "Deep learning at Nauman Irshad Lab is applied, not abstract: ImageNet-pretrained ResNet50 for 15 plant diseases with Grad-CAM explanations, reported at Agri Asia 2026 with 90.09% accuracy.",
       "Related deep components support pose estimation and 3D human reconstruction in product and research demos.",
     ],
     objectives: [
@@ -248,7 +248,7 @@ export const researchAreas: ResearchArea[] = [
     icon: "lens",
     image: "/images/research/explainable-ai.webp",
     overview: [
-      "Explainability at NRL is tied to decisions: CXG-DT and CARE-GATE use selective SHAP when risk gates open; crop disease detection uses Grad-CAM so predictions are inspectable for agricultural stakeholders.",
+      "Explainability at Nauman Irshad Lab is tied to decisions: CXG-DT and CARE-GATE use selective SHAP when risk gates open; crop disease detection uses Grad-CAM so predictions are inspectable for agricultural stakeholders.",
     ],
     objectives: [
       "Use explanations only when they change response behaviour under uncertainty.",

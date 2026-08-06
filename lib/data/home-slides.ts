@@ -67,7 +67,7 @@ export const homeSlides: HomeSlide[] = [
     id: "slide-team",
     tag: "Gallery · Team",
     title: "Laboratory team",
-    caption: "Student researchers and collaborators behind NRL papers and projects.",
+    caption: "Student researchers and collaborators behind Nauman Irshad Lab papers and projects.",
     image: "/images/gallery/team-01.webp",
     href: "/people",
   },
