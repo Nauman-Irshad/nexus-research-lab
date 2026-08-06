@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { HomeSlider } from "@/components/home-slider";
+import { Hero } from "@/components/hero";
+import { ProjectCard } from "@/components/project-card";
 import { PublicationCard } from "@/components/publication-card";
 import { Reveal } from "@/components/reveal";
 import { StatBand } from "@/components/stat-band";
 import { ButtonLink, Section, SectionHeading } from "@/components/ui";
-import { homeSlides } from "@/lib/data/home-slides";
+import { projects } from "@/lib/data/projects";
 import { sortedPublications } from "@/lib/data/publications";
 import { site } from "@/lib/data/site";
 
@@ -19,16 +20,31 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Latest work — auto-rotating picture slider */}
-      <div className="pt-[4.5rem]">
-        <HomeSlider slides={homeSlides} />
-      </div>
+      <Hero />
 
-      {/* Laboratory at a glance */}
+      <Section id="projects">
+        <SectionHeading
+          eyebrow="Projects"
+          title="Systems and studies we built"
+          lead="Each item below is work the laboratory has actually delivered or submitted."
+          action={
+            <ButtonLink href="/projects" variant="outline" arrow="right">
+              All projects
+            </ButtonLink>
+          }
+        />
+        <div className="mt-12 space-y-8">
+          {projects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 40}>
+              <ProjectCard project={project} index={index} />
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
       <StatBand />
 
-      {/* Latest publications */}
-      <Section id="publications">
+      <Section id="publications" tone="muted">
         <SectionHeading
           eyebrow="Latest publications"
           title="Recent work from the laboratory"
@@ -66,13 +82,6 @@ export default function HomePage() {
               className="border-white/25 text-white! hover:border-white/70"
             >
               Upcoming Work
-            </ButtonLink>
-            <ButtonLink
-              href={`mailto:${site.contact.email}`}
-              variant="outline"
-              className="border-white/25 text-white! hover:border-white/70"
-            >
-              {site.contact.email}
             </ButtonLink>
           </div>
         </div>
