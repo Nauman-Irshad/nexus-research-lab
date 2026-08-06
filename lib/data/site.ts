@@ -11,10 +11,10 @@ export const site = {
   tagline:
     "Advancing Artificial Intelligence, Cybersecurity, Digital Twins, and Intelligent Systems through Collaborative Research.",
   description:
-    "Nauman Irshad Lab is an independent, student-led collaborative research laboratory working on artificial intelligence, cybersecurity, machine learning, digital twins, intrusion detection and intelligent systems.",
+    "Nauman Irshad Lab is an independent student–teacher research group in Lahore working on artificial intelligence, cybersecurity, machine learning, digital twins, intrusion detection and intelligent systems. The lab has no institutional funding partners.",
   url: "https://nexus-research-lab-ten.vercel.app",
   founded: 2024,
-  established: "Established 2024 · Independent collaborative research group · Lahore",
+  established: "Established 2024 · Independent student–teacher research · Lahore",
   contact: {
     email: "naumanirshadalishah@gmail.com",
     collaborations: "naumanirshadalishah@gmail.com",
@@ -22,18 +22,11 @@ export const site = {
     phone: "+92 333 438 8037",
     phoneHref: "tel:+923334388037",
     whatsapp: "https://wa.me/923334388037",
-    addressLines: [
-      "Nauman Irshad Lab",
-      "University of Central Punjab",
-      "Lahore, Punjab",
-      "Pakistan",
-    ],
+    addressLines: ["Nauman Irshad Lab", "Lahore, Punjab", "Pakistan"],
     officeHours: "Monday – Friday, 10:00 – 18:00 (PKT, UTC+5)",
-    mapQuery: "University of Central Punjab, Lahore, Pakistan",
-    mapEmbed:
-      "https://www.google.com/maps?q=University%20of%20Central%20Punjab%2C%20Lahore%2C%20Pakistan&output=embed",
-    mapLink:
-      "https://www.google.com/maps/search/?api=1&query=University+of+Central+Punjab,+Lahore,+Pakistan",
+    mapQuery: "Lahore, Punjab, Pakistan",
+    mapEmbed: "https://www.google.com/maps?q=Lahore%2C%20Pakistan&output=embed",
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Lahore,+Pakistan",
   },
   social: {
     linkedin: "https://www.linkedin.com/in/nauman-irshad-ali-shah-aa4799342/",
@@ -75,13 +68,4 @@ export const navigation = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const collaborationPartners = [
-  "University of Central Punjab (UCP), Lahore",
-  "UCP Faculty of Information Technology & Computer Science (FOITCS)",
-  "UCP Office of Research, Innovation & Commercialization (ORIC)",
-  "Lahore Chamber of Commerce and Industry (LCCI)",
-  "Beaconhouse National University (BNU), Lahore",
-  "Techificent",
-  "19th International Agri Asia Conference",
-  "Impact Factor Finder (Dr. Ahmad Arsalan)",
-] as const;
+export const collaborationPartners = [] as const;

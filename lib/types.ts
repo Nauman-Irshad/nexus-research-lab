@@ -141,7 +141,7 @@ export interface Project {
   area: ResearchAreaSlug;
   /** Additional areas the project contributes to. */
   relatedAreas?: ResearchAreaSlug[];
-  fundingAgency: string;
+  fundingAgency?: string;
   supervisorId: string;
   teamIds: string[];
   externalTeam?: string[];

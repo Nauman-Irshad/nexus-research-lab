@@ -10,7 +10,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Funded and internal research projects at Nauman Irshad Lab, with supervisors, research teams, timelines, technology stacks, repositories, datasets and publications.",
+    "Research projects at Nauman Irshad Lab — independent student–teacher work with supervisors, teams, timelines, stacks, repositories and publications.",
   alternates: { canonical: "/projects" },
 };
 
@@ -26,10 +26,8 @@ export default function ProjectsPage() {
         project.title,
         project.summary,
         project.description,
-        project.fundingAgency,
         supervisor?.name ?? "",
         team,
-        project.externalTeam?.join(" ") ?? "",
         project.stack.join(" "),
         project.status,
       ]

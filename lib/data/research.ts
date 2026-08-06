@@ -2,6 +2,7 @@ import type { ResearchArea } from "@/lib/types";
 
 /**
  * Research themes grounded in Nauman Irshad Lab's real papers and projects only.
+ * Independent student?teacher work ? no institutional funding claims.
  */
 
 export const researchAreas: ResearchArea[] = [
@@ -10,12 +11,12 @@ export const researchAreas: ResearchArea[] = [
     title: "Digital Twin",
     short: "Twin-gated IoT intrusion response",
     description:
-      "Digital Twin replicas used to validate IoT intrusion alerts before costly response actions — the core of CXG-DT and CARE-GATE.",
+      "Digital Twin replicas used to validate IoT intrusion alerts before costly response actions ? the core of CXG-DT and CARE-GATE.",
     icon: "twin",
     image: "/images/research/digital-twin.webp",
     overview: [
       "Our Digital Twin work focuses on closed-loop IoT intrusion handling: detectors raise alerts, twin state residuals help validate them, and response actions (monitor, throttle, isolate, escalate) are gated by confidence and explanation evidence.",
-      "This programme produced the CXG-DT and CARE-GATE manuscripts with Dr. Ahmad Arsalan and the student researcher team at University of Central Punjab.",
+      "This programme produced the CXG-DT and CARE-GATE manuscripts with teacher Dr. Ahmad Arsalan and the student researcher team.",
     ],
     objectives: [
       "Gate IoT response actions with calibrated confidence and selective SHAP explanations.",
@@ -37,17 +38,8 @@ export const researchAreas: ResearchArea[] = [
         license: "Research code",
       },
     ],
-    collaborators: [
-      "University of Central Punjab (UCP), Lahore",
-      "Dr. Ahmad Arsalan — Faculty Advisor",
-    ],
-    funding: [
-      {
-        source: "Nauman Irshad Lab",
-        program: "Independent collaborative research · UCP FOITCS",
-        period: "2025 – 2026",
-      },
-    ],
+    collaborators: ["Dr. Ahmad Arsalan ? teacher", "Student research team"],
+    funding: [],
     futureDirections: [
       "Hardware-in-the-loop twin validation on constrained IoT gateways.",
       "Broader cost matrices for operational response policies.",
@@ -59,7 +51,7 @@ export const researchAreas: ResearchArea[] = [
     title: "Intrusion Detection",
     short: "IDS with safe response under uncertainty",
     description:
-      "Machine-learning intrusion detection for IoT traffic, with emphasis on uncertainty, cost-aware response and explainability — CARE-GATE and CXG-DT.",
+      "Machine-learning intrusion detection for IoT traffic, with emphasis on uncertainty, cost-aware response and explainability ? CARE-GATE and CXG-DT.",
     icon: "radar",
     image: "/images/research/intrusion-detection.webp",
     overview: [
@@ -85,14 +77,8 @@ export const researchAreas: ResearchArea[] = [
         license: "Research code",
       },
     ],
-    collaborators: ["University of Central Punjab (UCP), Lahore"],
-    funding: [
-      {
-        source: "Nauman Irshad Lab",
-        program: "Independent collaborative research",
-        period: "2025 – 2026",
-      },
-    ],
+    collaborators: ["Dr. Ahmad Arsalan ? teacher", "Student research team"],
+    funding: [],
     futureDirections: [
       "Online drift monitoring for deployed IoT detectors.",
       "Human-in-the-loop escalation studies for security operators.",
@@ -109,7 +95,7 @@ export const researchAreas: ResearchArea[] = [
     image: "/images/research/computer-vision.webp",
     overview: [
       "Computer vision at Nauman Irshad Lab covers person pose and monocular depth (PoseDepth-CMP), Metaverse / PIFuHD virtual try-on for Smart Fitao AI, and plant disease recognition with ResNet50 and Grad-CAM for Agri Asia 2026.",
-      "Student researchers co-author papers and ship demos presented through UCP ORIC to LCCI and Agri Asia.",
+      "Student researchers co-author papers and ship demos presented at LCCI and Agri Asia.",
     ],
     objectives: [
       "Compare OpenPose body models for contour-guided person depth estimation.",
@@ -133,24 +119,13 @@ export const researchAreas: ResearchArea[] = [
         license: "Research code",
       },
     ],
-    collaborators: [
-      "University of Central Punjab (UCP), Lahore",
-      "Techificent · Asif Farooq (FYP mentor)",
-      "UCP ORIC · LCCI · Agri Asia 2026",
-    ],
-    funding: [
-      {
-        source: "Final Year Project · UCP FOITCS",
-        program: "Smart Fitao AI · Crop Disease Detection",
-        period: "2024 – 2026",
-      },
-    ],
+    collaborators: ["Asif Farooq ? teacher / FYP mentor", "Student research team"],
+    funding: [],
     futureDirections: [
       "Stronger Metaverse try-on fidelity with PIFuHD finetuning.",
       "Mobile deployment of Grad-CAM-backed crop disease tools.",
     ],
     gallery: [
-      "/images/gallery/achievement-01.webp",
       "/images/projects/smart-fitao.png",
       "/images/projects/crop-disease.png",
     ],
@@ -184,14 +159,8 @@ export const researchAreas: ResearchArea[] = [
         license: "Research code",
       },
     ],
-    collaborators: ["University of Central Punjab (UCP) FOITCS", "UCP ORIC"],
-    funding: [
-      {
-        source: "Nauman Irshad Lab · UCP FOITCS",
-        program: "Agri Asia 2026 exhibitor project",
-        period: "2025 – 2026",
-      },
-    ],
+    collaborators: ["Student?teacher team"],
+    funding: [],
     futureDirections: ["Broader crop species coverage", "On-device model compression"],
     gallery: ["/images/projects/crop-disease.png"],
   },
@@ -200,11 +169,11 @@ export const researchAreas: ResearchArea[] = [
     title: "Natural Language Processing",
     short: "App-store feature mining and hybrid NLP",
     description:
-      "SAFE — pattern-based mining of software features from app store artifacts (published in SEMS) — and hybrid semantic NLP research with collaborators.",
+      "SAFE ? pattern-based mining of software features from app store artifacts (published in SEMS) ? and hybrid semantic NLP research with collaborators.",
     icon: "language",
     image: "/images/research/natural-language-processing.webp",
     overview: [
-      "SAFE extracts and matches app features from descriptions and user reviews using manually built POS and sentence patterns, without large training corpora. The paper was published in Spectrum of Engineering and Management Sciences with Ali Ahmad and Muhammad Umer Amir, alongside NLP coursework collaboration with Ameera Arif.",
+      "SAFE extracts and matches app features from descriptions and user reviews using manually built POS and sentence patterns, without large training corpora. The paper was published in Spectrum of Engineering and Management Sciences with Ali Ahmad and Muhammad Umer Amir, alongside NLP coursework with teacher Ameera Arif.",
       "A related hybrid NLP manuscript studies bridging classical NLP features with deep contextual embeddings.",
     ],
     objectives: [
@@ -225,19 +194,10 @@ export const researchAreas: ResearchArea[] = [
         license: "Research artefact",
       },
     ],
-    collaborators: [
-      "Ameera Arif — NLP collaborator",
-      "University of Central Punjab",
-    ],
-    funding: [
-      {
-        source: "Nauman Irshad Lab",
-        program: "NLP research & coursework collaboration",
-        period: "2024 – 2025",
-      },
-    ],
-    futureDirections: ["Broader multilingual app corpora", "Hybrid deep–symbolic feature matchers"],
-    gallery: ["/images/gallery/achievement-03.webp"],
+    collaborators: ["Ameera Arif ? teacher", "Student research team"],
+    funding: [],
+    futureDirections: ["Broader multilingual app corpora", "Hybrid deep?symbolic feature matchers"],
+    gallery: ["/images/publications/shah2025safe.jpg"],
   },
   {
     slug: "explainable-ai",
@@ -263,14 +223,8 @@ export const researchAreas: ResearchArea[] = [
         license: "Research code",
       },
     ],
-    collaborators: ["University of Central Punjab"],
-    funding: [
-      {
-        source: "Nauman Irshad Lab",
-        program: "Independent collaborative research",
-        period: "2025 – 2026",
-      },
-    ],
+    collaborators: ["Student?teacher team"],
+    funding: [],
     futureDirections: ["Operator studies on explanation usefulness for IDS response"],
     gallery: ["/images/research/explainable-ai.webp"],
   },

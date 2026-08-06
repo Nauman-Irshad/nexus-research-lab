@@ -1,8 +1,7 @@
 import type { Project } from "@/lib/types";
 
 /**
- * Projects with full detail from real NRL work:
- * conference papers, Smart Fitao AI, Crop Disease (Agri Asia), SAFE.
+ * Projects from Nauman Irshad Lab — student–teacher research, no external funding.
  */
 
 export const projects: Project[] = [
@@ -15,7 +14,6 @@ export const projects: Project[] = [
       "CXG-DT addresses the gap between high IDS accuracy and safe operational response. The pipeline detects attacks with lightweight models, estimates calibrated confidence, runs selective SHAP only when a risk gate opens, validates alerts against virtual device twin states, and permits monitor, throttle, isolate or escalate actions only when uncertainty is acceptable. Evaluated on a locked multiclass IoT set (CICIoT-style flows) with CatBoost as the primary detector.",
     area: "digital-twin",
     relatedAreas: ["intrusion-detection", "iot-security", "explainable-ai", "cybersecurity"],
-    fundingAgency: "Nauman Irshad Lab · University of Central Punjab",
     supervisorId: "a-arsalan",
     teamIds: ["n-shah", "u-amir", "a-ahmad", "d-ali", "q-naqvi"],
     start: "2025",
@@ -37,7 +35,6 @@ export const projects: Project[] = [
       "CARE-GATE focuses on the decision layer after detection: when should an IoT gateway isolate, throttle or only monitor? The framework uses an explicit cost matrix with uncertainty evidence from confidence scores, selective SHAP stability and twin-state residuals. Evaluated on a balanced eight-class CICIoT2023 subset with six detectors; CatBoost provides the best weighted F1 trade-off.",
     area: "intrusion-detection",
     relatedAreas: ["digital-twin", "iot-security", "explainable-ai", "cybersecurity"],
-    fundingAgency: "Nauman Irshad Lab · University of Central Punjab",
     supervisorId: "a-arsalan",
     teamIds: ["n-shah", "q-naqvi", "u-amir", "a-ahmad", "d-ali"],
     start: "2025",
@@ -59,7 +56,6 @@ export const projects: Project[] = [
       "PoseDepth-CMP gives practitioners evidence for choosing between OpenPose body-model variants for person-specific monocular depth. On 240 controlled samples, COCO reaches higher keypoint accuracy and lower depth error; MPI is faster and lighter. The project contributes paired statistics, cue ablations, uncertainty analysis and a learned adaptive selector.",
     area: "computer-vision",
     relatedAreas: ["deep-learning", "artificial-intelligence", "data-science"],
-    fundingAgency: "Nauman Irshad Lab · University of Central Punjab",
     supervisorId: "n-shah",
     teamIds: ["n-shah", "s-habib", "u-amir", "a-ahmad", "d-ali"],
     start: "2025",
@@ -73,20 +69,13 @@ export const projects: Project[] = [
     id: "smart-fitao-ai",
     title: "Smart Fitao AI · Cloth Size Prediction, 3D Try-On & Seller Studio (FYP)",
     summary:
-      "AI-powered cloth size prediction for tailors, 3D virtual try-on, a 24/7 chatbot with 3D product recommendations, and a seller 3D studio — presented to LCCI leadership through UCP ORIC.",
+      "AI-powered cloth size prediction for tailors, 3D virtual try-on, a 24/7 chatbot with 3D product recommendations, and a seller 3D studio — presented at LCCI.",
     description:
-      "Smart Fitao AI asks: what if getting the perfect fit required no guesswork — just AI? The Final Year Project delivers (1) cloth size prediction for tailors from body and garment measurements, (2) 3D virtual try-on for a more personalised shopping experience, (3) a 24/7 AI chatbot with 3D product recommendations, and (4) a 3D studio for sellers to convert 2D products into interactive 3D models (including PIFuHD Metaverse finetuning). The project was presented at the Lahore Chamber of Commerce and Industry (LCCI) through UCP ORIC's Industry-Academia Linkage Program to the President, Vice President, Chairman, Hammad Naveed and Rana Sikander Hayat. Feedback confirmed the problem is real and the solution is needed. FYP advisor: Asif Farooq. Team: Nauman Irshad Ali Shah, Umer Amir, Ali Ahmad and Abdul Rehman.",
+      "Smart Fitao AI asks: what if getting the perfect fit required no guesswork — just AI? The Final Year Project delivers (1) cloth size prediction for tailors from body and garment measurements, (2) 3D virtual try-on for a more personalised shopping experience, (3) a 24/7 AI chatbot with 3D product recommendations, and (4) a 3D studio for sellers to convert 2D products into interactive 3D models (including PIFuHD Metaverse finetuning). Presented at the Lahore Chamber of Commerce and Industry (LCCI). FYP advisor: Asif Farooq. Team: Nauman Irshad Ali Shah, Umer Amir, Ali Ahmad and Abdul Rehman.",
     area: "computer-vision",
     relatedAreas: ["deep-learning", "artificial-intelligence", "data-science"],
-    fundingAgency:
-      "Final Year Project · UCP FOITCS · Mentored by Asif Farooq (Techificent) · Presented via UCP ORIC at LCCI",
     supervisorId: "a-farooq",
     teamIds: ["n-shah", "u-amir", "a-ahmad", "a-rehman"],
-    externalTeam: [
-      "Techificent",
-      "UCP ORIC",
-      "Lahore Chamber of Commerce and Industry (LCCI)",
-    ],
     start: "2024",
     end: "2026",
     status: "Ongoing",
@@ -110,13 +99,11 @@ export const projects: Project[] = [
     summary:
       "AI-powered plant disease detection with ResNet50, Grad-CAM explainability and real-time FastAPI inference — exhibited at Agri Asia 2026, Expo Centre Lahore.",
     description:
-      "This AgriTech project detects 15 plant diseases across tomato, potato and pepper bell using 20,638 images, transfer learning on ResNet50 (ImageNet) and Explainable AI via Grad-CAM for transparent predictions. Reported metrics: 90.09% accuracy, 88.41% precision, 89.18% recall and 88.73% F1, with sub-200ms FastAPI inference. The work addresses global crop losses of 20–40% (~$220B annually). Proudly presented as an exhibitor at the 19th International Agri Asia & Green Pakistan Exhibition & Conference (09–11 May 2026, Expo Centre Lahore), organised with support from University of Central Punjab ORIC. Team: Nauman Irshad Ali Shah, Ali Ahmad, Abdul Rehman, Danish Ali and Umer Amir (UCP FOITCS).",
+      "This AgriTech project detects 15 plant diseases across tomato, potato and pepper bell using 20,638 images, transfer learning on ResNet50 (ImageNet) and Explainable AI via Grad-CAM for transparent predictions. Reported metrics: 90.09% accuracy, 88.41% precision, 89.18% recall and 88.73% F1, with sub-200ms FastAPI inference. Presented as an exhibitor at the 19th International Agri Asia & Green Pakistan Exhibition & Conference (09–11 May 2026, Expo Centre Lahore). Team: Nauman Irshad Ali Shah, Ali Ahmad, Abdul Rehman, Danish Ali and Umer Amir.",
     area: "deep-learning",
     relatedAreas: ["computer-vision", "explainable-ai", "artificial-intelligence", "medical-ai"],
-    fundingAgency: "Nauman Irshad Lab · UCP FOITCS · Exhibited with UCP ORIC at Agri Asia 2026",
     supervisorId: "n-shah",
     teamIds: ["n-shah", "a-ahmad", "a-rehman", "d-ali", "u-amir"],
-    externalTeam: ["UCP ORIC", "19th International Agri Asia Conference"],
     start: "2025",
     end: "2026",
     status: "Completed",
@@ -136,12 +123,11 @@ export const projects: Project[] = [
     id: "safe-features",
     title: "SAFE · Mining Software Features from App Store Artifacts",
     summary:
-      "Pattern-based NLP approach to extract and match app features from store descriptions and user reviews — linked to NLP coursework with Ameera Arif.",
+      "Pattern-based NLP approach to extract and match app features from store descriptions and user reviews — with teacher Ameera Arif.",
     description:
-      "SAFE (published in Spectrum of Engineering and Management Sciences) manually builds POS and sentence patterns frequently used when text refers to app features, then extracts and matches features across developer pages and user reviews without large training corpora. The work sits alongside NLP teaching collaboration with Ameera Arif.",
+      "SAFE (published in Spectrum of Engineering and Management Sciences) manually builds POS and sentence patterns frequently used when text refers to app features, then extracts and matches features across developer pages and user reviews without large training corpora. Student–teacher work with Ameera Arif.",
     area: "natural-language-processing",
     relatedAreas: ["data-science", "machine-learning"],
-    fundingAgency: "Nauman Irshad Lab · University of Central Punjab",
     supervisorId: "a-arif",
     teamIds: ["n-shah", "a-ahmad", "u-amir", "a-arif"],
     start: "2024",
@@ -157,10 +143,9 @@ export const projects: Project[] = [
     summary:
       "Interactive student coding platform with XP progress, weekly programs and a live 3D runner — Pause, Next, Replay and Run for hands-on practice.",
     description:
-      "CodeVista 3D Runner is an educational coding lab led by Asim Irshad (Lecturer, Beaconhouse National University). Students complete weekly programs, earn XP toward skill goals, and practise in a live 3D runner with Pause, Next, Replay and Run controls plus a source panel for the current exercise. Built for classroom and self-paced learning so beginners can see code behaviour while they write it. Live demo: https://codevista-3d-runner.vercel.app/",
+      "CodeVista 3D Runner is an educational coding lab led by teacher Asim Irshad. Students complete weekly programs, earn XP toward skill goals, and practise in a live 3D runner with Pause, Next, Replay and Run controls plus a source panel for the current exercise. Built for classroom and self-paced learning so beginners can see code behaviour while they write it. Live demo: https://codevista-3d-runner.vercel.app/",
     area: "artificial-intelligence",
     relatedAreas: ["data-science", "deep-learning"],
-    fundingAgency: "Asim Irshad · Beaconhouse National University (BNU) · Nauman Irshad Lab affiliate",
     supervisorId: "a-irshad",
     teamIds: ["a-irshad"],
     start: "2025",

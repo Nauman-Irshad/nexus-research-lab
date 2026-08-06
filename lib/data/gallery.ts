@@ -24,7 +24,7 @@ export const gallery: GalleryItem[] = [
     id: "g-lcci-fitao",
     title: "LCCI · Smart Fitao AI Industry-Academia presentation",
     caption:
-      "Smart Fitao AI presented to Lahore Chamber of Commerce and Industry leadership through UCP ORIC.",
+      "Smart Fitao AI presented to Lahore Chamber of Commerce and Industry leadership.",
     category: "Presentations",
     image: "/images/gallery/lcci-smart-fitao.png",
     date: "2026-07-20",

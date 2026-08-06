@@ -162,6 +162,7 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
 
           {/* Sidebar */}
           <aside className="space-y-6 lg:col-span-5">
+            {area.funding.length > 0 && (
             <div className="surface-card rounded-2xl p-7">
               <AccentBar />
               <h2 className="mt-5 text-lg font-semibold">Funding</h2>
@@ -180,11 +181,13 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
                 ))}
               </ul>
             </div>
+            )}
 
+            {area.collaborators.length > 0 && (
             <div className="surface-card rounded-2xl p-7">
               <h2 className="flex items-center gap-2 text-lg font-semibold">
                 <UsersIcon className="text-emerald-nrl h-5 w-5" />
-                Collaborators
+                Teachers & students
               </h2>
               <ul className="mt-4 space-y-2.5">
                 {area.collaborators.map((collaborator) => (
@@ -198,6 +201,7 @@ export default async function ResearchAreaPage({ params }: { params: Promise<{ s
                 ))}
               </ul>
             </div>
+            )}
 
             <div className="surface-card rounded-2xl p-7">
               <h2 className="flex items-center gap-2 text-lg font-semibold">

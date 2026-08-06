@@ -16,7 +16,7 @@ export const homeSlides: HomeSlide[] = [
     tag: "Presentation · LCCI",
     title: "Smart Fitao AI at Lahore Chamber of Commerce",
     caption:
-      "Industry-Academia Linkage presentation through UCP ORIC — cloth size prediction, 3D try-on and seller studio.",
+      "Industry presentation at LCCI — cloth size prediction, 3D try-on and seller studio.",
     image: "/images/gallery/lcci-smart-fitao.png",
     href: "/projects#smart-fitao-ai",
   },

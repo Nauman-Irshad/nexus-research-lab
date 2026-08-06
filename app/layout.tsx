@@ -3,7 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { themeScript } from "@/components/theme-toggle";
-import { collaborationPartners, site } from "@/lib/data/site";
+import { site } from "@/lib/data/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -117,7 +117,6 @@ const organisationJsonLd = {
     "Explainable AI",
     "Medical AI",
   ],
-  memberOf: collaborationPartners.map((name) => ({ "@type": "Organization", name })),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

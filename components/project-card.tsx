@@ -82,8 +82,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             {project.description}
           </p>
 
-          <dl className="mt-6 grid gap-5 sm:grid-cols-2">
-            <MetaItem label="Funding agency" value={project.fundingAgency} />
+          <dl className="mt-6">
             <MetaItem
               label="Publications"
               value={
@@ -124,11 +123,6 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
                 </li>
               ))}
             </ul>
-            {project.externalTeam && project.externalTeam.length > 0 && (
-              <p className="mt-3 text-[0.8rem]" style={{ color: "var(--text-muted)" }}>
-                Partners: {project.externalTeam.join(", ")}
-              </p>
-            )}
           </div>
 
           <div className="mt-6">

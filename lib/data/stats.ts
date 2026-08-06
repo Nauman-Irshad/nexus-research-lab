@@ -1,7 +1,6 @@
 import { people } from "@/lib/data/people";
 import { projects } from "@/lib/data/projects";
 import { publications } from "@/lib/data/publications";
-import { collaborationPartners } from "@/lib/data/site";
 
 const byType = (type: string) => publications.filter((item) => item.type === type).length;
 const byGroup = (...groups: string[]) =>
@@ -30,31 +29,21 @@ export const stats: Stat[] = [
     value: byType("conference"),
     note: "Peer-reviewed conference papers",
   },
-  { label: "Research Projects", value: projects.length, note: "Funded and internal projects" },
+  { label: "Research Projects", value: projects.length, note: "Student–teacher projects" },
   {
-    label: "Faculty Members",
+    label: "Teachers",
     value: byGroup("director", "co-director", "faculty", "affiliate-faculty", "visiting-faculty"),
-    note: "Core, affiliate and visiting faculty",
-  },
-  {
-    label: "Research Associates",
-    value: byGroup("research-associate"),
-    note: "Full-time research staff",
+    note: "Teachers and faculty advisors",
   },
   {
     label: "Research Assistants",
     value: byGroup("research-assistant"),
-    note: "Graduate and undergraduate assistants",
+    note: "Student research assistants",
   },
   {
     label: "Students",
-    value: byGroup("phd", "ms", "intern"),
-    note: "PhD, MS and intern researchers",
-  },
-  {
-    label: "International Collaborations",
-    value: collaborationPartners.length,
-    note: "Partner institutions and groups",
+    value: byGroup("phd", "ms", "intern", "director"),
+    note: "Student researchers",
   },
 ];
 

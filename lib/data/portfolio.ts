@@ -94,7 +94,7 @@ export const naumanHighlights = [
     id: "hl-lcci",
     title: "LCCI · Smart Fitao AI presentation",
     detail:
-      "Industry-Academia Linkage presentation to Lahore Chamber of Commerce and Industry leadership via UCP ORIC.",
+      "Presentation to Lahore Chamber of Commerce and Industry leadership.",
     image: "/images/gallery/lcci-smart-fitao.png",
     kind: "Presentation",
     collaboratorNames: [
