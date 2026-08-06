@@ -81,7 +81,7 @@ export const projects: Project[] = [
     fundingAgency:
       "Final Year Project · UCP FOITCS · Mentored by Asif Farooq (Techificent) · Presented via UCP ORIC at LCCI",
     supervisorId: "a-farooq",
-    teamIds: ["n-shah", "u-amir", "a-ahmad", "a-rehman", "a-irshad"],
+    teamIds: ["n-shah", "u-amir", "a-ahmad", "a-rehman"],
     externalTeam: [
       "Techificent",
       "UCP ORIC",
