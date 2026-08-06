@@ -112,7 +112,7 @@ export const people: Person[] = [
       "IoT security",
       "Academic tooling",
     ],
-    bio: "I'm a Senior Lecturer in the Faculty of Information Technology and Computer Science at the University of Central Punjab, Pakistan. With a strong educational background in Computer Science, including an MS from NUCES-FAST, I've been dedicated to both teaching and research in the field. My research interests encompass Future Internet Architectures, Recent Network Approaches, Cross-Layer Design for Wireless Networks, Home Automation Technologies, Machine Learning, and more. Founder & Lead Engineer of Impact Factor Finder.",
+    bio: "Senior Lecturer, UCP FOITCS. MS NUCES-FAST. Research: digital twin, wireless networks, AI. Founder of Impact Factor Finder.",
     photo: "/people/a-arsalan.jpg",
     links: {
       email: "ahmad.arslan@ucp.edu.pk",
