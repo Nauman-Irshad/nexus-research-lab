@@ -1,0 +1,31 @@
+{
+  "name": "nexus-research-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official website of Nexus Research Lab (NRL) — an independent, student-led collaborative research laboratory in AI, cybersecurity and intelligent systems.",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "build:webpack": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0",
+    "postcss": "^8.5.25",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
+  }
+}
