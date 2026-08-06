@@ -5,7 +5,7 @@ import { LinkedInIcon } from "@/components/icons";
 import { ButtonLink, PageHeader, Section } from "@/components/ui";
 import { people, personMatchesAuthor } from "@/lib/data/people";
 import { projects } from "@/lib/data/projects";
-import { sortedPublications } from "@/lib/data/publications";
+import { getPublications, sortedPublications } from "@/lib/data/publications";
 import { site } from "@/lib/data/site";
 import type { Person, PersonGroup, Project, Publication } from "@/lib/types";
 import { initials, seededValue } from "@/lib/utils";
@@ -13,7 +13,7 @@ import { initials, seededValue } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "People",
   description:
-    "Teachers and bachelor student researchers at Nexus Research Lab — affiliation, papers and project work.",
+    "Teachers and bachelor student researchers at Nexus Research Lab — affiliation and research work.",
   alternates: { canonical: "/people" },
 };
 
@@ -23,6 +23,20 @@ const teacherGroups = new Set<PersonGroup>([
   "affiliate-faculty",
   "visiting-faculty",
 ]);
+
+type MemberEntry = {
+  id: string;
+  title: string;
+  href: string;
+  role?: string;
+  status?: string;
+  detail: string;
+  venue?: string;
+  year?: number;
+  pdf?: string;
+  demo?: string;
+  github?: string;
+};
 
 function papersFor(person: Person): Publication[] {
   return sortedPublications.filter((pub) =>
@@ -35,6 +49,63 @@ function workFor(person: Person): Project[] {
     (project) =>
       project.supervisorId === person.id || project.teamIds.includes(person.id),
   );
+}
+
+/** One card per project/paper — no duplicate titles across Papers + Work. */
+function entriesFor(person: Person): MemberEntry[] {
+  const work = workFor(person);
+  const papers = papersFor(person);
+  const coveredPaperIds = new Set<string>();
+  const entries: MemberEntry[] = [];
+
+  for (const project of work) {
+    const linked = getPublications(project.publicationIds).filter((pub) =>
+      pub.authors.some((author) => personMatchesAuthor(person, author)),
+    );
+    // Prefer papers the person authored; else any linked paper for venue detail
+    const paper =
+      linked[0] ??
+      getPublications(project.publicationIds)[0] ??
+      undefined;
+    if (paper) coveredPaperIds.add(paper.id);
+    linked.forEach((p) => coveredPaperIds.add(p.id));
+
+    entries.push({
+      id: project.id,
+      title: project.title,
+      href: `/projects#${project.id}`,
+      role: project.supervisorId === person.id ? "Supervisor" : "Team",
+      status: project.status,
+      detail: project.summary,
+      venue: paper ? (paper.venueShort ?? paper.venue) : undefined,
+      year: paper?.year,
+      pdf: paper?.links?.pdf,
+      demo: project.links?.demo,
+      github: project.links?.github ?? paper?.links?.github,
+    });
+  }
+
+  for (const paper of papers) {
+    if (coveredPaperIds.has(paper.id)) continue;
+    entries.push({
+      id: paper.id,
+      title: paper.title,
+      href: `/publications#${paper.id}`,
+      status:
+        paper.status === "under-review"
+          ? "Under review"
+          : paper.status === "accepted"
+            ? "Accepted"
+            : "Published",
+      detail: paper.abstract.slice(0, 220).trim() + (paper.abstract.length > 220 ? "…" : ""),
+      venue: paper.venueShort ?? paper.venue,
+      year: paper.year,
+      pdf: paper.links?.pdf,
+      github: paper.links?.github,
+    });
+  }
+
+  return entries;
 }
 
 const folders: { id: string; title: string; blurb: string; members: Person[] }[] = [
@@ -58,7 +129,7 @@ export default function PeoplePage() {
       <PageHeader
         eyebrow="People"
         title="Laboratory members"
-        lead="Each member shows affiliation, papers and project work linked to them."
+        lead="Affiliation and a single detailed list of each member’s research — no duplicate titles."
       />
 
       <Section className="py-10 md:py-14">
@@ -93,12 +164,7 @@ export default function PeoplePage() {
 
               <ul>
                 {folder.members.map((person) => (
-                  <PersonRow
-                    key={person.id}
-                    person={person}
-                    papers={papersFor(person)}
-                    work={workFor(person)}
-                  />
+                  <PersonRow key={person.id} person={person} entries={entriesFor(person)} />
                 ))}
               </ul>
             </section>
@@ -135,15 +201,7 @@ export default function PeoplePage() {
   );
 }
 
-function PersonRow({
-  person,
-  papers,
-  work,
-}: {
-  person: Person;
-  papers: Publication[];
-  work: Project[];
-}) {
+function PersonRow({ person, entries }: { person: Person; entries: MemberEntry[] }) {
   const href = person.links.linkedin;
   const hue = seededValue(person.id);
   const angle = Math.round(120 + hue * 110);
@@ -193,72 +251,78 @@ function PersonRow({
 
         <p className="mt-1 text-[0.82rem] font-medium" style={{ color: "var(--text-muted)" }}>
           {person.affiliation}
+          {person.interests.length > 0 ? ` · ${person.interests.join(" · ")}` : ""}
         </p>
 
         <p className="mt-2 text-[0.9rem] leading-relaxed" style={{ color: "var(--text-body)" }}>
           {person.bio}
         </p>
 
-        {(person.interests?.length ?? 0) > 0 && (
-          <p className="mt-2 text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
-            <span className="font-semibold" style={{ color: "var(--text-strong)" }}>
-              Focus:{" "}
-            </span>
-            {person.interests.join(" · ")}
-          </p>
-        )}
-
-        {papers.length > 0 && (
-          <div className="mt-3">
+        {entries.length > 0 && (
+          <div className="mt-4">
             <p
               className="text-[0.65rem] font-semibold uppercase tracking-[0.14em]"
               style={{ color: "var(--text-muted)" }}
             >
-              Papers
+              Research & work
             </p>
-            <ul className="mt-1.5 space-y-1">
-              {papers.map((paper) => (
-                <li key={paper.id} className="text-[0.84rem] leading-snug">
+            <ul className="mt-2 space-y-4">
+              {entries.map((entry) => (
+                <li key={entry.id}>
                   <Link
-                    href={`/publications#${paper.id}`}
-                    className="link-underline"
+                    href={entry.href}
+                    className="link-underline text-[0.92rem] font-semibold leading-snug"
                     style={{ color: "var(--text-strong)" }}
                   >
-                    {paper.title}
+                    {entry.title}
                   </Link>
-                  <span style={{ color: "var(--text-muted)" }}>
-                    {" "}
-                    · {paper.venueShort ?? paper.venue} {paper.year}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {work.length > 0 && (
-          <div className="mt-3">
-            <p
-              className="text-[0.65rem] font-semibold uppercase tracking-[0.14em]"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Work
-            </p>
-            <ul className="mt-1.5 space-y-1">
-              {work.map((project) => (
-                <li key={project.id} className="text-[0.84rem] leading-snug">
-                  <Link
-                    href={`/projects#${project.id}`}
-                    className="link-underline"
-                    style={{ color: "var(--text-strong)" }}
+                  <p className="mt-1 text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
+                    {[entry.role, entry.status, entry.venue, entry.year]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                  <p
+                    className="mt-1.5 text-[0.84rem] leading-relaxed"
+                    style={{ color: "var(--text-body)" }}
                   >
-                    {project.title}
-                  </Link>
-                  <span style={{ color: "var(--text-muted)" }}>
-                    {" "}
-                    · {project.supervisorId === person.id ? "Supervisor" : "Team"} ·{" "}
-                    {project.status}
-                  </span>
+                    {entry.detail}
+                  </p>
+                  {(entry.pdf || entry.demo || entry.github) && (
+                    <p className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[0.78rem]">
+                      {entry.pdf && (
+                        <a
+                          href={entry.pdf}
+                          download
+                          className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
+                          style={{ color: "var(--text-strong)" }}
+                        >
+                          PDF
+                        </a>
+                      )}
+                      {entry.demo && (
+                        <a
+                          href={entry.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
+                          style={{ color: "var(--text-strong)" }}
+                        >
+                          Live demo
+                        </a>
+                      )}
+                      {entry.github && (
+                        <a
+                          href={entry.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
+                          style={{ color: "var(--text-strong)" }}
+                        >
+                          GitHub
+                        </a>
+                      )}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
