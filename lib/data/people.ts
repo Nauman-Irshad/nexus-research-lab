@@ -141,17 +141,17 @@ export const people: Person[] = [
   {
     id: "a-arif",
     name: "Ameera Arif",
-    role: "Data Scientist | Researcher",
+    role: "Data Scientist | Researcher · Teacher",
     group: "affiliate-faculty",
-    affiliation: "Data Scientist · Researcher",
-    association: "Data Scientist | Researcher",
+    affiliation: "Data Scientist · Researcher · Teacher",
+    association: "Data Scientist | Researcher · Teacher",
     interests: [
       "Natural language processing",
       "Software feature mining",
       "App store analytics",
       "Data science",
     ],
-    bio: "Data Scientist | Researcher",
+    bio: "Data Scientist | Researcher · Teacher",
     photo: "/people/a-arif.jpg",
     links: {
       linkedin: "https://www.linkedin.com/in/ameera-arif/",
@@ -399,3 +399,25 @@ export function isLabMember(authorName: string) {
   }
   return false;
 }
+
+/** Extra author-string aliases → person id (publications spelling variants). */
+const authorAliases: Record<string, string> = {
+  "abdul kabeer": "a-kabir",
+  "abdul kabir": "a-kabir",
+  "ahmad arsalan": "a-arsalan",
+  "umer amir": "u-amir",
+  "muhammad umer amir": "u-amir",
+};
+
+function normalizePersonName(name: string) {
+  return name.replace(/^(Dr\.|Prof\.)\s+/i, "").toLowerCase().trim();
+}
+
+/** True when a publication author string refers to this person. */
+export function personMatchesAuthor(person: Person, authorName: string) {
+  const author = normalizePersonName(authorName);
+  const self = normalizePersonName(person.name);
+  if (author === self || author.includes(self) || self.includes(author)) return true;
+  return authorAliases[author] === person.id;
+}
+

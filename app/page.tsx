@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
+import { HomeWinsGallery } from "@/components/home-wins-gallery";
 import { ProjectCard } from "@/components/project-card";
-import { PublicationCard } from "@/components/publication-card";
 import { Reveal } from "@/components/reveal";
 import { StatBand } from "@/components/stat-band";
 import { ButtonLink, Section, SectionHeading } from "@/components/ui";
 import { projects } from "@/lib/data/projects";
-import { sortedPublications } from "@/lib/data/publications";
 import { site } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -16,8 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const latestPublications = sortedPublications.slice(0, 5);
-
   return (
     <>
       <Hero />
@@ -44,25 +41,7 @@ export default function HomePage() {
 
       <StatBand />
 
-      <Section id="publications" tone="muted">
-        <SectionHeading
-          eyebrow="Latest publications"
-          title="Recent work from the laboratory"
-          lead="Papers are released with code, data and evaluation protocols wherever licensing permits."
-          action={
-            <ButtonLink href="/publications" variant="outline" arrow="right">
-              Publication database
-            </ButtonLink>
-          }
-        />
-        <div className="mt-14 grid gap-6">
-          {latestPublications.map((publication, index) => (
-            <Reveal key={publication.id} delay={index * 45}>
-              <PublicationCard publication={publication} index={index} />
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      <HomeWinsGallery />
 
       <Section tone="inverse">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">

@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CodeIcon, DatabaseIcon, GlobeIcon } from "@/components/icons";
+import { CitationActions } from "@/components/citation-actions";
+import { CodeIcon, DatabaseIcon, FileIcon, GlobeIcon } from "@/components/icons";
 import { Badge, MetaItem } from "@/components/ui";
+import { doiUrl, toBibTeX, toIeee } from "@/lib/citation";
 import { getPerson } from "@/lib/data/people";
 import { getPublications } from "@/lib/data/publications";
 import { areaTitle } from "@/lib/data/research";
@@ -122,8 +124,63 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             </ul>
           </div>
 
+          {publications.length > 0 && (
+            <div className="mt-6 space-y-4 border-t pt-5">
+              <p
+                className="text-[0.65rem] font-semibold uppercase tracking-[0.16em]"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Paper · download & cite
+              </p>
+              {publications.map((publication) => {
+                const doi = doiUrl(publication.doi);
+                return (
+                  <div key={publication.id} className="flex flex-wrap items-center gap-2">
+                    {publication.links?.pdf && (
+                      <ProjectLink
+                        href={publication.links.pdf}
+                        icon={<FileIcon className="h-3.5 w-3.5" />}
+                        download
+                      >
+                        Download PDF
+                      </ProjectLink>
+                    )}
+                    {doi && (
+                      <ProjectLink href={doi} icon={<GlobeIcon className="h-3.5 w-3.5" />}>
+                        DOI
+                      </ProjectLink>
+                    )}
+                    {publication.links?.github && (
+                      <ProjectLink
+                        href={publication.links.github}
+                        icon={<CodeIcon className="h-3.5 w-3.5" />}
+                      >
+                        GitHub
+                      </ProjectLink>
+                    )}
+                    {publication.links?.dataset && (
+                      <ProjectLink
+                        href={publication.links.dataset}
+                        icon={<DatabaseIcon className="h-3.5 w-3.5" />}
+                      >
+                        Dataset
+                      </ProjectLink>
+                    )}
+                    <CitationActions
+                      bibtex={toBibTeX(publication)}
+                      citation={toIeee(publication)}
+                      compact
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
           {(project.links?.github || project.links?.demo || project.links?.dataset) && (
-            <div className="mt-6 flex flex-wrap gap-2 border-t pt-5">
+            <div
+              className={`flex flex-wrap gap-2 ${publications.length ? "mt-3" : "mt-6 border-t pt-5"}`}
+            >
               {project.links?.github && (
                 <ProjectLink href={project.links.github} icon={<CodeIcon className="h-3.5 w-3.5" />}>
                   Repository
@@ -154,16 +211,19 @@ function ProjectLink({
   href,
   icon,
   children,
+  download,
 }: {
   href: string;
   icon: React.ReactNode;
   children: React.ReactNode;
+  download?: boolean;
 }) {
+  const external = href.startsWith("http");
   return (
     <a
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(download ? { download: true } : {})}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="hover:border-emerald-nrl hover:text-emerald-deep dark:hover:text-emerald-soft inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[0.75rem] font-medium transition-colors duration-300"
       style={{ color: "var(--text-strong)" }}
     >

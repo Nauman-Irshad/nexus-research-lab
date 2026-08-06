@@ -38,3 +38,5 @@ Thumbs.db
 # local-only source dumps / helper scripts
 all publication things finals/
 scripts/
+
+.vercel
