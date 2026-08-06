@@ -1,7 +1,7 @@
 import type { ResearchArea } from "@/lib/types";
 
 /**
- * Research themes grounded in Nexus Research Lab's real papers and projects only.
+ * Research themes grounded in Nauman Irshad Lab's real papers and projects only.
  */
 
 export const researchAreas: ResearchArea[] = [
@@ -43,7 +43,7 @@ export const researchAreas: ResearchArea[] = [
     ],
     funding: [
       {
-        source: "Nexus Research Lab",
+        source: "Nauman Irshad Lab",
         program: "Independent collaborative research · UCP FOITCS",
         period: "2025 – 2026",
       },
@@ -88,7 +88,7 @@ export const researchAreas: ResearchArea[] = [
     collaborators: ["University of Central Punjab (UCP), Lahore"],
     funding: [
       {
-        source: "Nexus Research Lab",
+        source: "Nauman Irshad Lab",
         program: "Independent collaborative research",
         period: "2025 – 2026",
       },
@@ -187,7 +187,7 @@ export const researchAreas: ResearchArea[] = [
     collaborators: ["University of Central Punjab (UCP) FOITCS", "UCP ORIC"],
     funding: [
       {
-        source: "Nexus Research Lab · UCP FOITCS",
+        source: "Nauman Irshad Lab · UCP FOITCS",
         program: "Agri Asia 2026 exhibitor project",
         period: "2025 – 2026",
       },
@@ -231,7 +231,7 @@ export const researchAreas: ResearchArea[] = [
     ],
     funding: [
       {
-        source: "Nexus Research Lab",
+        source: "Nauman Irshad Lab",
         program: "NLP research & coursework collaboration",
         period: "2024 – 2025",
       },
@@ -266,7 +266,7 @@ export const researchAreas: ResearchArea[] = [
     collaborators: ["University of Central Punjab"],
     funding: [
       {
-        source: "Nexus Research Lab",
+        source: "Nauman Irshad Lab",
         program: "Independent collaborative research",
         period: "2025 – 2026",
       },

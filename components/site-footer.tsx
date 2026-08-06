@@ -37,7 +37,7 @@ export function SiteFooter() {
               <LogoMark className="h-10 w-10" />
               <div className="leading-tight">
                 <p className="font-[family-name:var(--font-display)] text-base font-semibold">
-                  Nexus Research Lab
+                  {site.name}
                 </p>
                 <p className="text-[0.62rem] font-medium uppercase tracking-[0.2em] text-navy-200">
                   Independent collaborative research

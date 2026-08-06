@@ -12,7 +12,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Real research from Nexus Research Lab: Digital Twin IDS, PoseDepth-CMP, Smart Fitao AI, crop disease detection, and SAFE feature mining.",
+    "Real research from Nauman Irshad Lab: Digital Twin IDS, PoseDepth-CMP, Smart Fitao AI, crop disease detection, and SAFE feature mining.",
   alternates: { canonical: "/research" },
 };
 
@@ -22,7 +22,7 @@ export default function ResearchPage() {
       <PageHeader
         eyebrow="Research"
         title="What we have done"
-        lead="Only real laboratory work — papers, systems and exhibitions from Nexus Research Lab. No placeholder programmes."
+        lead="Only real laboratory work — papers, systems and exhibitions from Nauman Irshad Lab. No placeholder programmes."
         meta={
           <>
             <Metric value={projects.length} label="Projects" />

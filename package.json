@@ -2,7 +2,7 @@
   "name": "nexus-research-lab",
   "version": "1.0.0",
   "private": true,
-  "description": "Official website of Nexus Research Lab (NRL) — an independent, student-led collaborative research laboratory in AI, cybersecurity and intelligent systems.",
+  "description": "Official website of Nauman Irshad Lab — an independent, student-led collaborative research laboratory in AI, cybersecurity and intelligent systems.",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",

@@ -112,7 +112,7 @@ export interface Person {
   role: string;
   group: PersonGroup;
   affiliation: string;
-  /** How this person is associated with Nexus Research Lab. */
+  /** How this person is associated with Nauman Irshad Lab. */
   association: string;
   interests: string[];
   bio: string;

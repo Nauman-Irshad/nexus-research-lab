@@ -13,7 +13,7 @@ import { initials, seededValue } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "People",
   description:
-    "Teachers and bachelor student researchers at Nexus Research Lab — affiliation, author rank and research work.",
+    "Teachers and bachelor student researchers at Nauman Irshad Lab — affiliation, author rank and research work.",
   alternates: { canonical: "/people" },
 };
 

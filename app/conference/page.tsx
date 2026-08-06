@@ -7,7 +7,7 @@ import { sortedPublications } from "@/lib/data/publications";
 export const metadata: Metadata = {
   title: "Conference",
   description:
-    "Conference papers and manuscripts from Nexus Research Lab — CXG-DT, CARE-GATE, PoseDepth-CMP and related submissions.",
+    "Conference papers and manuscripts from Nauman Irshad Lab — CXG-DT, CARE-GATE, PoseDepth-CMP and related submissions.",
   alternates: { canonical: "/conference" },
 };
 

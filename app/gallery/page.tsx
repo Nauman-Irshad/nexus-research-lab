@@ -6,7 +6,7 @@ import { galleryCategories, gallerySorted } from "@/lib/data/gallery";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Photographs from Nexus Research Lab: the laboratory, research meetings, conferences, workshops, presentations, team activities and achievements.",
+    "Photographs from Nauman Irshad Lab: the laboratory, research meetings, conferences, workshops, presentations, team activities and achievements.",
   alternates: { canonical: "/gallery" },
 };
 

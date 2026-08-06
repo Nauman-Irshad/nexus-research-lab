@@ -5,7 +5,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "Terms governing use of the Nexus Research Lab website, including citation expectations, licensing of code and datasets, and limitations of liability.",
+    "Terms governing use of the Nauman Irshad Lab website, including citation expectations, licensing of code and datasets, and limitations of liability.",
   alternates: { canonical: "/terms" },
 };
 
@@ -26,7 +26,7 @@ export default function TermsPage() {
         {
           heading: "Use of content",
           bullets: [
-            "Text and figures on this site may be quoted for teaching, review and scholarly purposes with attribution to Nexus Research Lab and a link to the page.",
+            "Text and figures on this site may be quoted for teaching, review and scholarly purposes with attribution to Nauman Irshad Lab and a link to the page.",
             "Publications remain subject to the copyright of their respective publishers; author copies are provided only where licensing permits.",
             "Code repositories are licensed individually — check the LICENSE file in each repository before reuse.",
             "Datasets are released under the licence stated in their documentation. Restricted datasets require a data-use agreement.",

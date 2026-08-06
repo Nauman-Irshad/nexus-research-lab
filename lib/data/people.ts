@@ -1,7 +1,7 @@
 import type { Person, PersonGroup } from "@/lib/types";
 
 /**
- * Nexus Research Lab roster.
+ * Nauman Irshad Lab roster.
  * `role` = LinkedIn headline. `bio` = LinkedIn about / profile summary.
  */
 
@@ -297,7 +297,7 @@ export const people: Person[] = [
     affiliation: "University of Central Punjab",
     association: "Student Researcher",
     interests: ["Artificial intelligence", "Software systems"],
-    bio: "Student researcher at Nexus Research Lab.",
+    bio: "Student researcher at Nauman Irshad Lab.",
     links: {},
   },
   {
@@ -308,7 +308,7 @@ export const people: Person[] = [
     affiliation: "University of Central Punjab",
     association: "Student Researcher",
     interests: ["Artificial intelligence", "Software systems"],
-    bio: "Student researcher at Nexus Research Lab.",
+    bio: "Student researcher at Nauman Irshad Lab.",
     links: {},
   },
   {
@@ -319,7 +319,7 @@ export const people: Person[] = [
     affiliation: "University of Central Punjab",
     association: "Student Researcher",
     interests: ["Artificial intelligence", "Software systems"],
-    bio: "Student researcher at Nexus Research Lab.",
+    bio: "Student researcher at Nauman Irshad Lab.",
     links: {},
   },
   {
@@ -330,7 +330,7 @@ export const people: Person[] = [
     affiliation: "University of Central Punjab",
     association: "Student Researcher",
     interests: ["Artificial intelligence", "Software systems"],
-    bio: "Student researcher at Nexus Research Lab.",
+    bio: "Student researcher at Nauman Irshad Lab.",
     links: {},
   },
   {
@@ -376,7 +376,7 @@ export const people: Person[] = [
     affiliation: "University of Central Punjab",
     association: "Student Researcher",
     interests: ["Artificial intelligence", "Software systems"],
-    bio: "Student researcher at Nexus Research Lab.",
+    bio: "Student researcher at Nauman Irshad Lab.",
     links: {},
   },
 ];

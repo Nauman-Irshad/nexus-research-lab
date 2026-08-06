@@ -5,7 +5,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Nexus Research Lab handles personal data submitted through this website, including enquiry forms, analytics and research data governance.",
+    "How Nauman Irshad Lab handles personal data submitted through this website, including enquiry forms, analytics and research data governance.",
   alternates: { canonical: "/privacy" },
 };
 

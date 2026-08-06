@@ -10,7 +10,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Funded and internal research projects at Nexus Research Lab, with supervisors, research teams, timelines, technology stacks, repositories, datasets and publications.",
+    "Funded and internal research projects at Nauman Irshad Lab, with supervisors, research teams, timelines, technology stacks, repositories, datasets and publications.",
   alternates: { canonical: "/projects" },
 };
 

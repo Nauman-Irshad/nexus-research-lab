@@ -3,7 +3,7 @@ import { site } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Join Us",
-  description: "Message Nexus Research Lab on WhatsApp to join or collaborate.",
+  description: "Message Nauman Irshad Lab on WhatsApp to join or collaborate.",
   alternates: { canonical: "/join" },
 };
 
@@ -14,7 +14,7 @@ export default function JoinPage() {
       <p className="eyebrow">Join Us</p>
       <h1 className="mt-4 text-3xl font-semibold">Message us on WhatsApp</h1>
       <p className="mt-4 max-w-md" style={{ color: "var(--text-muted)" }}>
-        Tap below to chat with Nexus Research Lab at {site.contact.phone}.
+        Tap below to chat with Nauman Irshad Lab at {site.contact.phone}.
       </p>
       <a
         href={site.contact.whatsapp}

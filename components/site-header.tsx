@@ -51,7 +51,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className="group flex items-center gap-3"
-            aria-label="Nexus Research Lab — home"
+            aria-label={`${site.name} — home`}
           >
             <LogoMark
               className={cn(
@@ -59,25 +59,14 @@ export function SiteHeader() {
                 overHero && "text-white",
               )}
             />
-            <span className="flex flex-col leading-none">
-              <span
-                className={cn(
-                  "font-[family-name:var(--font-display)] text-[0.95rem] font-semibold tracking-tight",
-                  overHero && "text-white",
-                )}
-                style={overHero ? undefined : { color: "var(--text-strong)" }}
-              >
-                Nexus Research Lab
-              </span>
-              <span
-                className={cn(
-                  "mt-1 hidden text-[0.58rem] font-medium uppercase tracking-[0.2em] sm:block",
-                  overHero ? "text-white/65" : undefined,
-                )}
-                style={overHero ? undefined : { color: "var(--text-muted)" }}
-              >
-                AI · Cybersecurity · Intelligent Systems
-              </span>
+            <span
+              className={cn(
+                "font-[family-name:var(--font-display)] text-[0.95rem] font-semibold tracking-tight",
+                overHero && "text-white",
+              )}
+              style={overHero ? undefined : { color: "var(--text-strong)" }}
+            >
+              {site.name}
             </span>
           </Link>
 

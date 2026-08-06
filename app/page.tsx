@@ -46,7 +46,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow text-emerald-soft!">Join the laboratory</p>
             <h2 className="mt-2 text-2xl font-semibold text-white md:text-3xl">
-              Collaborate with Nexus Research Lab
+              Collaborate with Nauman Irshad Lab
             </h2>
           </div>
           <div className="flex flex-wrap gap-3">

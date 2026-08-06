@@ -5,7 +5,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Accessibility",
   description:
-    "Accessibility commitments for the Nexus Research Lab website, including WCAG 2.2 AA conformance measures, known limitations and how to report a barrier.",
+    "Accessibility commitments for the Nauman Irshad Lab website, including WCAG 2.2 AA conformance measures, known limitations and how to report a barrier.",
   alternates: { canonical: "/accessibility" },
 };
 

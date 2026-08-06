@@ -5,14 +5,14 @@
  */
 
 export const site = {
-  name: "Nexus Research Lab",
-  shortName: "NRL",
-  legalName: "Nexus Research Lab (NRL)",
+  name: "Nauman Irshad Lab",
+  shortName: "NIL",
+  legalName: "Nauman Irshad Lab",
   tagline:
     "Advancing Artificial Intelligence, Cybersecurity, Digital Twins, and Intelligent Systems through Collaborative Research.",
   description:
-    "Nexus Research Lab (NRL) is an independent, student-led collaborative research laboratory working on artificial intelligence, cybersecurity, machine learning, digital twins, intrusion detection and intelligent systems.",
-  url: "https://nexusresearchlab.org",
+    "Nauman Irshad Lab is an independent, student-led collaborative research laboratory working on artificial intelligence, cybersecurity, machine learning, digital twins, intrusion detection and intelligent systems.",
+  url: "https://nexus-research-lab-ten.vercel.app",
   founded: 2024,
   established: "Established 2024 · Independent collaborative research group · Lahore",
   contact: {
@@ -23,7 +23,7 @@ export const site = {
     phoneHref: "tel:+923334388037",
     whatsapp: "https://wa.me/923334388037",
     addressLines: [
-      "Nexus Research Lab",
+      "Nauman Irshad Lab",
       "University of Central Punjab",
       "Lahore, Punjab",
       "Pakistan",

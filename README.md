@@ -1,6 +1,6 @@
-# Nexus Research Lab
+# Nauman Irshad Lab
 
-Official website for **Nexus Research Lab (NRL)** — student-led collaborative research in AI, cybersecurity, digital twins, computer vision and NLP at the University of Central Punjab, Lahore.
+Official website for **Nauman Irshad Lab** — student-led collaborative research in AI, cybersecurity, digital twins, computer vision and NLP at the University of Central Punjab, Lahore.
 
 ## Stack
 

@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "medical AI",
     "intelligent systems",
     "student-led research",
-    "Nexus Research Lab",
+    "Nauman Irshad Lab",
   ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,

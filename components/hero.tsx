@@ -47,7 +47,7 @@ export function Hero() {
             </p>
 
             <h1 className="animate-fade-up mt-8 text-[2.65rem] leading-[1.04] font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-[4.4rem]">
-              Nexus Research Lab
+              {site.name}
             </h1>
 
             <p

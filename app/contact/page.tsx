@@ -14,7 +14,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Nexus Research Lab: laboratory address, email, telephone, map, social and academic profiles, and a direct enquiry form.",
+    "Contact Nauman Irshad Lab: laboratory address, email, telephone, map, social and academic profiles, and a direct enquiry form.",
   alternates: { canonical: "/contact" },
 };
 

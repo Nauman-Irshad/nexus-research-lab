@@ -1,7 +1,7 @@
 import type { Publication } from "@/lib/types";
 
 /**
- * Real bibliography from Nexus Research Lab manuscripts in
+ * Real bibliography from Nauman Irshad Lab manuscripts in
  * `all publication things finals/` (conference, journal, research projects).
  */
 

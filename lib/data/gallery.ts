@@ -33,7 +33,7 @@ export const gallery: GalleryItem[] = [
     id: "g-cust-hackathon-banner",
     title: "CUST Hackathon 2026 · Campus exhibition",
     caption:
-      "Capital University of Science & Technology (CUST) Hackathon 2026 — Nexus Research Lab projects on site.",
+      "Capital University of Science & Technology (CUST) Hackathon 2026 — Nauman Irshad Lab projects on site.",
     category: "Workshops",
     image: "/images/gallery/cust-05.jpeg",
     date: "2026-06-13",
@@ -42,7 +42,7 @@ export const gallery: GalleryItem[] = [
     id: "g-excite-team-trophy",
     title: "ExciTe CUP 2026 · Team with trophy",
     caption:
-      "Nexus Research Lab team at the 11th ExciTe CUP / 4th Hackathon 2026 — certificates and trophy.",
+      "Nauman Irshad Lab team at the 11th ExciTe CUP / 4th Hackathon 2026 — certificates and trophy.",
     category: "Achievements",
     image: "/images/gallery/cust-04.jpeg",
     date: "2026-06-13",

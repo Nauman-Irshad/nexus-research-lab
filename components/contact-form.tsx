@@ -62,7 +62,7 @@ export function ContactForm({ mailto }: { mailto: string }) {
     if (!endpoint) {
       const body = `${values.message}\n\n—\n${values.name}\n${values.email}`;
       window.location.href = `mailto:${mailto}?subject=${encodeURIComponent(
-        `[NRL] ${values.subject}`,
+        `[NIL] ${values.subject}`,
       )}&body=${encodeURIComponent(body)}`;
       setState("mailto");
       return;
@@ -92,7 +92,7 @@ export function ContactForm({ mailto }: { mailto: string }) {
         </span>
         <h3 className="mt-5 text-xl font-semibold">Message received</h3>
         <p className="mx-auto mt-3 max-w-md leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          Thank you for writing to Nexus Research Lab. We reply to most enquiries within three
+          Thank you for writing to Nauman Irshad Lab. We reply to most enquiries within three
           working days.
         </p>
       </div>

@@ -8,7 +8,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Upcoming Work",
   description:
-    "Papers under review and projects currently in progress at Nexus Research Lab — submission pending manuscripts and ongoing builds.",
+    "Papers under review and projects currently in progress at Nauman Irshad Lab — submission pending manuscripts and ongoing builds.",
   alternates: { canonical: "/upcoming" },
 };
 
@@ -18,7 +18,7 @@ export default function UpcomingPage() {
       <PageHeader
         eyebrow="Upcoming Work"
         title="What we are working on now"
-        lead="Submission-pending papers and ongoing projects — the active pipeline of Nexus Research Lab."
+        lead="Submission-pending papers and ongoing projects — the active pipeline of Nauman Irshad Lab."
         meta={
           <>
             <Metric value={upcomingPapers.length} label="Papers pending / under review" />

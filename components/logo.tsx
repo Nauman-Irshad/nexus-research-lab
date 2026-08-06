@@ -16,7 +16,7 @@ export function LogoMark({ className, decorative = true }: { className?: string;
       className={cn("h-9 w-9", className)}
       role={decorative ? "presentation" : "img"}
       aria-hidden={decorative || undefined}
-      aria-label={decorative ? undefined : "Nexus Research Lab"}
+      aria-label={decorative ? undefined : "Nauman Irshad Lab"}
     >
       {/* Outer hexagon */}
       <path
@@ -70,31 +70,15 @@ export function LogoMark({ className, decorative = true }: { className?: string;
   );
 }
 
-export function Wordmark({
-  className,
-  compact = false,
-}: {
-  className?: string;
-  compact?: boolean;
-}) {
+export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <LogoMark className="h-9 w-9 shrink-0" />
-      <span className="flex flex-col leading-none">
-        <span
-          className="font-[family-name:var(--font-display)] text-[0.98rem] font-semibold tracking-tight"
-          style={{ color: "var(--text-strong)" }}
-        >
-          Nexus Research Lab
-        </span>
-        {!compact && (
-          <span
-            className="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.22em]"
-            style={{ color: "var(--text-muted)" }}
-          >
-            AI · Cybersecurity · Intelligent Systems
-          </span>
-        )}
+      <span
+        className="font-[family-name:var(--font-display)] text-[0.98rem] font-semibold tracking-tight"
+        style={{ color: "var(--text-strong)" }}
+      >
+        Nauman Irshad Lab
       </span>
     </span>
   );

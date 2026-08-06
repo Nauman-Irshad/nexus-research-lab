@@ -43,7 +43,7 @@ export const homeSlides: HomeSlide[] = [
     tag: "Exhibition · CUST",
     title: "CUST university project exhibition",
     caption:
-      "Nexus Research Lab projects presented at the CUST university project exhibition.",
+      "Nauman Irshad Lab projects presented at the CUST university project exhibition.",
     image: "/images/gallery/workshop-02.webp",
     href: "/gallery",
   },
@@ -51,7 +51,7 @@ export const homeSlides: HomeSlide[] = [
     id: "slide-conference-1",
     tag: "Conference",
     title: "Conference & research meetings",
-    caption: "Lab conference and presentation moments from Nexus Research Lab activity.",
+    caption: "Lab conference and presentation moments from Nauman Irshad Lab activity.",
     image: "/images/gallery/conference-01.webp",
     href: "/conference",
   },

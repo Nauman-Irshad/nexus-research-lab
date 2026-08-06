@@ -14,7 +14,7 @@ import { bookChapters, stats } from "@/lib/data/stats";
 export const metadata: Metadata = {
   title: "Publications",
   description:
-    "Searchable database of Nexus Research Lab publications: journal papers, conference papers and book chapters, with DOI, PDF, BibTeX, code and dataset links.",
+    "Searchable database of Nauman Irshad Lab publications: journal papers, conference papers and book chapters, with DOI, PDF, BibTeX, code and dataset links.",
   alternates: { canonical: "/publications" },
 };
 

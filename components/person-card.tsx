@@ -135,7 +135,7 @@ export function PersonCard({
           className="text-[0.66rem] font-semibold uppercase tracking-[0.16em]"
           style={{ color: "var(--text-muted)" }}
         >
-          Association with NRL
+          Association with NIL
         </p>
         <p
           className="mt-2 text-[0.82rem] leading-relaxed"

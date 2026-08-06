@@ -7,7 +7,7 @@ import { site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "News",
   description:
-    "Timeline of awards, paper acceptances, conference participation, invited talks, workshops, collaborations, funding and media coverage at Nexus Research Lab.",
+    "Timeline of awards, paper acceptances, conference participation, invited talks, workshops, collaborations, funding and media coverage at Nauman Irshad Lab.",
   alternates: { canonical: "/news" },
 };
 
