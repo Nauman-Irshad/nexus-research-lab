@@ -7,7 +7,8 @@ import { doiUrl, toBibTeX, toIeee } from "@/lib/citation";
 import { getPerson } from "@/lib/data/people";
 import { getPublications } from "@/lib/data/publications";
 import { areaTitle } from "@/lib/data/research";
-import type { Project } from "@/lib/types";
+import type { Person, Project } from "@/lib/types";
+import { initials, seededValue } from "@/lib/utils";
 
 const statusTone: Record<Project["status"], "accent" | "neutral" | "outline"> = {
   Ongoing: "accent",
@@ -18,8 +19,25 @@ const statusTone: Record<Project["status"], "accent" | "neutral" | "outline"> = 
 
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const supervisor = getPerson(project.supervisorId);
-  const team = project.teamIds.map((id) => getPerson(id)).filter(Boolean);
+  const team = project.teamIds
+    .map((id) => getPerson(id))
+    .filter((person): person is Person => Boolean(person));
   const publications = getPublications(project.publicationIds);
+
+  const peopleShown = (() => {
+    const seen = new Set<string>();
+    const list: Person[] = [];
+    if (supervisor) {
+      seen.add(supervisor.id);
+      list.push(supervisor);
+    }
+    for (const member of team) {
+      if (seen.has(member.id)) continue;
+      seen.add(member.id);
+      list.push(member);
+    }
+    return list;
+  })();
 
   return (
     <article
@@ -67,24 +85,6 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           <dl className="mt-6 grid gap-5 sm:grid-cols-2">
             <MetaItem label="Funding agency" value={project.fundingAgency} />
             <MetaItem
-              label="Supervisor"
-              value={supervisor ? `${supervisor.name} — ${supervisor.affiliation}` : "—"}
-            />
-            <MetaItem
-              label="Research team"
-              value={
-                <>
-                  {team.map((member) => member!.name).join(", ")}
-                  {project.externalTeam && project.externalTeam.length > 0 && (
-                    <span style={{ color: "var(--text-muted)" }}>
-                      {" · "}
-                      {project.externalTeam.join(", ")}
-                    </span>
-                  )}
-                </>
-              }
-            />
-            <MetaItem
               label="Publications"
               value={
                 publications.length > 0 ? (
@@ -103,6 +103,33 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
               }
             />
           </dl>
+
+          <div className="mt-6">
+            <p
+              className="text-[0.65rem] font-semibold uppercase tracking-[0.16em]"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Supervisor & research team
+            </p>
+            <p className="mt-1 text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
+              Click a photo to open LinkedIn
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-3">
+              {peopleShown.map((person) => (
+                <li key={person.id}>
+                  <PersonPhotoLink
+                    person={person}
+                    badge={person.id === project.supervisorId ? "Supervisor" : "Team"}
+                  />
+                </li>
+              ))}
+            </ul>
+            {project.externalTeam && project.externalTeam.length > 0 && (
+              <p className="mt-3 text-[0.8rem]" style={{ color: "var(--text-muted)" }}>
+                Partners: {project.externalTeam.join(", ")}
+              </p>
+            )}
+          </div>
 
           <div className="mt-6">
             <p
@@ -204,6 +231,74 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         </div>
       </div>
     </article>
+  );
+}
+
+function PersonPhotoLink({ person, badge }: { person: Person; badge: string }) {
+  const linkedin = person.links.linkedin;
+  const hue = seededValue(person.id);
+  const angle = Math.round(120 + hue * 110);
+  const avatar = (
+    <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[var(--border)]">
+      {person.photo ? (
+        <Image
+          src={person.photo}
+          alt=""
+          width={48}
+          height={48}
+          sizes="48px"
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <span
+          aria-hidden
+          className="flex h-full w-full items-center justify-center text-[0.65rem] font-semibold text-white"
+          style={{
+            backgroundImage: `linear-gradient(${angle}deg, #0B1F3A 0%, #133055 55%, #00A86B 145%)`,
+          }}
+        >
+          {initials(person.name)}
+        </span>
+      )}
+    </span>
+  );
+
+  const body = (
+    <>
+      {avatar}
+      <span className="min-w-0">
+        <span className="block truncate text-[0.8rem] font-semibold leading-tight">
+          {person.name}
+        </span>
+        <span className="block text-[0.68rem]" style={{ color: "var(--text-muted)" }}>
+          {badge}
+        </span>
+      </span>
+    </>
+  );
+
+  if (linkedin) {
+    return (
+      <a
+        href={linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`Open ${person.name} on LinkedIn`}
+        className="hover:border-emerald-nrl inline-flex max-w-[11rem] items-center gap-2.5 rounded-full border py-1.5 pr-3 pl-1.5 transition-colors"
+        style={{ color: "var(--text-strong)" }}
+      >
+        {body}
+      </a>
+    );
+  }
+
+  return (
+    <span
+      className="inline-flex max-w-[11rem] items-center gap-2.5 rounded-full border py-1.5 pr-3 pl-1.5"
+      style={{ color: "var(--text-strong)" }}
+    >
+      {body}
+    </span>
   );
 }
 

@@ -1,4 +1,4 @@
-/** Full-bleed project & achievement mosaic for the home page (3×4 frame). */
+/** Full-bleed project & achievement mosaic — real photos only. */
 
 export type MosaicTile = {
   id: string;
@@ -21,16 +21,34 @@ export const homeMosaic: MosaicTile[] = [
     href: "/projects#smart-fitao-ai",
   },
   {
+    id: "m-excite-trophy",
+    title: "ExciTe CUP 2026 · Team win",
+    image: "/images/gallery/cust-04.jpeg",
+    href: "/gallery",
+  },
+  {
+    id: "m-cust",
+    title: "CUST Hackathon 2026",
+    image: "/images/gallery/cust-05.jpeg",
+    href: "/gallery",
+  },
+  {
+    id: "m-team-certs",
+    title: "ExciTe CUP · Certificates",
+    image: "/images/gallery/cust-06.jpeg",
+    href: "/people",
+  },
+  {
+    id: "m-excite-collage",
+    title: "Smart Fitao · ExciTe CUP collage",
+    image: "/images/gallery/cust-01.jpeg",
+    href: "/projects#smart-fitao-ai",
+  },
+  {
     id: "m-cxg",
     title: "CXG-DT paper",
     image: "/images/publications/shah2026cxgdt.jpg",
     href: "/projects#cxg-dt",
-  },
-  {
-    id: "m-team",
-    title: "Laboratory team",
-    image: "/images/gallery/team-01.webp",
-    href: "/people",
   },
   {
     id: "m-care",
@@ -39,28 +57,16 @@ export const homeMosaic: MosaicTile[] = [
     href: "/projects#care-gate",
   },
   {
-    id: "m-present",
-    title: "Research presentation",
-    image: "/images/gallery/presentation-01.webp",
-    href: "/gallery",
-  },
-  {
     id: "m-pose",
     title: "PoseDepth-CMP",
     image: "/images/publications/shah2026posedepth.jpg",
     href: "/projects#posedepth-cmp",
   },
   {
-    id: "m-cust",
-    title: "CUST exhibition",
-    image: "/images/gallery/workshop-02.webp",
-    href: "/gallery",
-  },
-  {
-    id: "m-conf",
-    title: "Conference moments",
-    image: "/images/gallery/conference-01.webp",
-    href: "/conference",
+    id: "m-fitao-demo",
+    title: "Smart Fitao AI · Try-on",
+    image: "/images/gallery/fitao-demo-01.jpeg",
+    href: "/projects#smart-fitao-ai",
   },
   {
     id: "m-harvard",
@@ -69,15 +75,9 @@ export const homeMosaic: MosaicTile[] = [
     href: "/portfolio#certificates",
   },
   {
-    id: "m-safe",
-    title: "SAFE · Feature mining",
-    image: "/images/publications/shah2025safe.jpg",
-    href: "/projects#safe-features",
-  },
-  {
-    id: "m-codevista",
-    title: "CodeVista 3D Runner",
-    image: "/images/gallery/presentation-02.webp",
-    href: "https://codevista-3d-runner.vercel.app/",
+    id: "m-lab-show",
+    title: "Lab exhibition",
+    image: "/images/gallery/cust-02.jpeg",
+    href: "/gallery",
   },
 ];

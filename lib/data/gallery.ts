@@ -1,6 +1,6 @@
 import type { GalleryCategory, GalleryItem } from "@/lib/types";
 
-/** Real event photographs, CUST exhibition, team wins and certificates. */
+/** Real photographs only — CUST / ExciTe CUP, Agri Asia, LCCI, certificates, team. */
 
 export const galleryCategories: GalleryCategory[] = [
   "Conference Photos",
@@ -30,69 +30,84 @@ export const gallery: GalleryItem[] = [
     date: "2026-07-20",
   },
   {
-    id: "g-cust-01",
-    title: "CUST · University project exhibition",
+    id: "g-cust-hackathon-banner",
+    title: "CUST Hackathon 2026 · Campus exhibition",
     caption:
-      "Nexus Research Lab projects presented at the Capital University of Science & Technology (CUST) project exhibition.",
+      "Capital University of Science & Technology (CUST) Hackathon 2026 — Nexus Research Lab projects on site.",
     category: "Workshops",
-    image: "/images/gallery/workshop-02.webp",
-    date: "2025-12-10",
+    image: "/images/gallery/cust-05.jpeg",
+    date: "2026-06-13",
   },
   {
-    id: "g-cust-02",
-    title: "CUST · Exhibition booth and demos",
-    caption: "Live demos and posters from NRL systems at the CUST university project exhibition.",
-    category: "Workshops",
-    image: "/images/gallery/workshop-01.webp",
-    date: "2025-12-10",
+    id: "g-excite-team-trophy",
+    title: "ExciTe CUP 2026 · Team with trophy",
+    caption:
+      "Nexus Research Lab team at the 11th ExciTe CUP / 4th Hackathon 2026 — certificates and trophy.",
+    category: "Achievements",
+    image: "/images/gallery/cust-04.jpeg",
+    date: "2026-06-13",
   },
   {
-    id: "g-cust-03",
-    title: "CUST · Team at the exhibition",
-    caption: "Student researchers presenting lab work to visitors at CUST.",
-    category: "Workshops",
-    image: "/images/gallery/workshop-03.webp",
-    date: "2025-12-10",
-  },
-  {
-    id: "g-team-01",
-    title: "Laboratory team · Group win",
-    caption: "Nexus Research Lab student researchers and collaborators after project milestones.",
+    id: "g-excite-certificates",
+    title: "ExciTe CUP 2026 · Ali, Nauman & Umer",
+    caption:
+      "Ali Ahmad, Nauman Irshad Ali Shah and Muhammad Umer Amir with certificates at ExciTe CUP 2026.",
     category: "Team Activities",
-    image: "/images/gallery/team-01.webp",
-    date: "2026-01-15",
+    image: "/images/gallery/cust-06.jpeg",
+    date: "2026-06-13",
   },
   {
-    id: "g-team-02",
-    title: "Laboratory team · Research group",
-    caption: "Group photograph from a lab working session and paper sprint.",
-    category: "Team Activities",
-    image: "/images/gallery/team-02.webp",
-    date: "2026-02-20",
+    id: "g-excite-collage",
+    title: "ExciTe CUP 2026 · Smart Fitao AI collage",
+    caption:
+      "Team photos, Smart Fitao AI poster and participant badge from the 11th ExciTe CUP 2026.",
+    category: "Achievements",
+    image: "/images/gallery/cust-01.jpeg",
+    date: "2026-06-13",
   },
   {
-    id: "g-team-03",
-    title: "Laboratory team · Celebration",
-    caption: "Team moment marking conference submissions and exhibition wins.",
-    category: "Team Activities",
-    image: "/images/gallery/team-03.webp",
-    date: "2026-05-12",
-  },
-  {
-    id: "g-conference-01",
-    title: "Conference · Research meeting",
-    caption: "Conference and research-meeting moments from Nexus Research Lab activity.",
-    category: "Conference Photos",
-    image: "/images/gallery/conference-01.webp",
-    date: "2026-03-01",
-  },
-  {
-    id: "g-presentation-01",
-    title: "Research presentation · Group stage",
-    caption: "Presenting Digital Twin, IDS and applied AI work to academic and industry audiences.",
+    id: "g-lab-exhibition",
+    title: "Lab exhibition · Project posters",
+    caption:
+      "Indoor project showcase with research posters and visitors in the computing lab.",
     category: "Presentations",
-    image: "/images/gallery/presentation-01.webp",
-    date: "2026-04-08",
+    image: "/images/gallery/cust-02.jpeg",
+    date: "2026-06-13",
+  },
+  {
+    id: "g-fitao-thesis",
+    title: "Smart Fitao AI · BSCS final project report",
+    caption:
+      "University of Central Punjab final-project cover — advisor Asif Farooq; team Nauman, Umer, Ali Ahmad, Abdul Rehman.",
+    category: "Achievements",
+    image: "/images/gallery/fitao-team-01.jpeg",
+    date: "2026-06-01",
+  },
+  {
+    id: "g-fitao-demo",
+    title: "Smart Fitao AI · Virtual try-on product",
+    caption: "Live Smart Fitao AI virtual try-on interface used in demos and LCCI presentations.",
+    category: "Presentations",
+    image: "/images/gallery/fitao-demo-01.jpeg",
+    date: "2026-07-01",
+  },
+  {
+    id: "g-paper-sprint",
+    title: "Research sprint · Remote team call",
+    caption:
+      "Nauman, Umer and Ali Ahmad on a Microsoft Teams paper / project working session.",
+    category: "Team Activities",
+    image: "/images/gallery/fitao-team-02.jpeg",
+    date: "2026-05-20",
+  },
+  {
+    id: "g-open-house",
+    title: "UCP Open House Exhibition 2025 · Volunteer",
+    caption:
+      "Volunteer badge — Faculty of Information Technology & Computer Science Open House Exhibition 2025.",
+    category: "Achievements",
+    image: "/images/gallery/open-house-01.jpeg",
+    date: "2025-11-15",
   },
   {
     id: "g-agri-asia-certificate",
@@ -112,44 +127,10 @@ export const gallery: GalleryItem[] = [
     image: "/images/gallery/harvardx-predictionx.png",
     date: "2026-08-05",
   },
-  {
-    id: "g-achievement-01",
-    title: "Achievement · Lab milestone",
-    caption: "Recognition moments from Nexus Research Lab exhibitions and submissions.",
-    category: "Achievements",
-    image: "/images/gallery/achievement-01.webp",
-    date: "2026-06-01",
-  },
-  {
-    id: "g-achievement-02",
-    title: "Achievement · Team award moment",
-    caption: "Group photograph marking a laboratory win.",
-    category: "Achievements",
-    image: "/images/gallery/achievement-02.webp",
-    date: "2026-06-15",
-  },
-  {
-    id: "g-achievement-03",
-    title: "Achievement · Exhibition recognition",
-    caption: "Exhibition and conference recognition for NRL applied AI work.",
-    category: "Achievements",
-    image: "/images/gallery/achievement-03.webp",
-    date: "2026-07-01",
-  },
 ];
 
 export const gallerySorted = [...gallery].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
 );
 
-/** Home: CUST exhibition + wins / group photographs (all of them). */
-export const homeWinsGallery = gallerySorted.filter(
-  (item) =>
-    item.id.startsWith("g-cust") ||
-    item.category === "Achievements" ||
-    item.category === "Team Activities" ||
-    item.id === "g-agri-asia-collage" ||
-    item.id === "g-lcci-fitao" ||
-    item.id === "g-conference-01" ||
-    item.id === "g-presentation-01",
-);
+export const homeWinsGallery = gallerySorted;
