@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LinkedInIcon } from "@/components/icons";
 import { ButtonLink, PageHeader, Section } from "@/components/ui";
-import { people, personMatchesAuthor } from "@/lib/data/people";
+import { getPerson, people, personMatchesAuthor } from "@/lib/data/people";
 import { projects } from "@/lib/data/projects";
 import { getPublications, sortedPublications } from "@/lib/data/publications";
 import { site } from "@/lib/data/site";
@@ -13,7 +13,7 @@ import { initials, seededValue } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "People",
   description:
-    "Teachers and bachelor student researchers at Nauman Irshad Lab — affiliation, author rank and research work.",
+    "Teachers and bachelor students at Nauman Irshad Lab — affiliation and projects.",
   alternates: { canonical: "/people" },
 };
 
@@ -24,11 +24,18 @@ const teacherGroups = new Set<PersonGroup>([
   "visiting-faculty",
 ]);
 
+type AuthorChip = {
+  id: string;
+  name: string;
+  photo?: string;
+  linkedin?: string;
+  rank?: string;
+};
+
 type MemberEntry = {
   id: string;
   title: string;
   href: string;
-  /** e.g. 1st author · Supervisor · Team */
   credit: string;
   status?: string;
   detail: string;
@@ -37,21 +44,22 @@ type MemberEntry = {
   pdf?: string;
   demo?: string;
   github?: string;
+  authors: AuthorChip[];
 };
 
 function ordinalAuthor(position: number) {
   const n = position + 1;
   const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 13) return `${n}th author`;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
   switch (n % 10) {
     case 1:
-      return `${n}st author`;
+      return `${n}st`;
     case 2:
-      return `${n}nd author`;
+      return `${n}nd`;
     case 3:
-      return `${n}rd author`;
+      return `${n}rd`;
     default:
-      return `${n}th author`;
+      return `${n}th`;
   }
 }
 
@@ -60,7 +68,53 @@ function authorCredit(person: Person, publication: Publication) {
     personMatchesAuthor(person, author),
   );
   if (index < 0) return "Co-author";
-  return ordinalAuthor(index);
+  return `${ordinalAuthor(index)} author`;
+}
+
+function resolveAuthorName(authorName: string): AuthorChip {
+  const match = people.find((person) => personMatchesAuthor(person, authorName));
+  if (match) {
+    return {
+      id: match.id,
+      name: match.name,
+      photo: match.photo,
+      linkedin: match.links.linkedin,
+    };
+  }
+  return { id: authorName.toLowerCase().replace(/\s+/g, "-"), name: authorName };
+}
+
+function authorsFromPublication(publication: Publication): AuthorChip[] {
+  return publication.authors.map((author, index) => ({
+    ...resolveAuthorName(author),
+    rank: `${ordinalAuthor(index)} author`,
+  }));
+}
+
+function authorsFromProject(project: Project, paper?: Publication): AuthorChip[] {
+  if (paper) return authorsFromPublication(paper);
+
+  const seen = new Set<string>();
+  const list: AuthorChip[] = [];
+  const push = (id: string, rank: string) => {
+    if (seen.has(id)) return;
+    seen.add(id);
+    const person = getPerson(id);
+    if (!person) return;
+    list.push({
+      id: person.id,
+      name: person.name,
+      photo: person.photo,
+      linkedin: person.links.linkedin,
+      rank,
+    });
+  };
+
+  push(project.supervisorId, "Supervisor");
+  for (const id of project.teamIds) {
+    push(id, id === project.supervisorId ? "Supervisor" : "Team");
+  }
+  return list;
 }
 
 function papersFor(person: Person): Publication[] {
@@ -89,20 +143,11 @@ function entriesFor(person: Person): MemberEntry[] {
     const paper =
       linkedAuthored[0] ?? getPublications(project.publicationIds)[0] ?? undefined;
     linkedAuthored.forEach((p) => coveredPaperIds.add(p.id));
-    if (paper && linkedAuthored.length === 0) {
-      // Supervised / team project with a paper they did not author — still mark paper covered
-      // so we do not duplicate below if they somehow match later.
-    }
 
     const credits: string[] = [];
-    if (linkedAuthored[0]) {
-      credits.push(authorCredit(person, linkedAuthored[0]));
-    }
-    if (project.supervisorId === person.id) {
-      credits.push("Supervisor");
-    } else if (!linkedAuthored[0]) {
-      credits.push("Team");
-    }
+    if (linkedAuthored[0]) credits.push(authorCredit(person, linkedAuthored[0]));
+    if (project.supervisorId === person.id) credits.push("Supervisor");
+    else if (!linkedAuthored[0]) credits.push("Team");
 
     entries.push({
       id: project.id,
@@ -116,6 +161,7 @@ function entriesFor(person: Person): MemberEntry[] {
       pdf: linkedAuthored[0]?.links?.pdf ?? paper?.links?.pdf,
       demo: project.links?.demo,
       github: project.links?.github ?? paper?.links?.github,
+      authors: authorsFromProject(project, paper),
     });
   }
 
@@ -132,11 +178,12 @@ function entriesFor(person: Person): MemberEntry[] {
           : paper.status === "accepted"
             ? "Accepted"
             : "Published",
-      detail: paper.abstract.slice(0, 220).trim() + (paper.abstract.length > 220 ? "…" : ""),
+      detail: paper.abstract.slice(0, 180).trim() + (paper.abstract.length > 180 ? "…" : ""),
       venue: paper.venueShort ?? paper.venue,
       year: paper.year,
       pdf: paper.links?.pdf,
       github: paper.links?.github,
+      authors: authorsFromPublication(paper),
     });
   }
 
@@ -147,13 +194,13 @@ const folders: { id: string; title: string; blurb: string; members: Person[] }[]
   {
     id: "teachers",
     title: "Teachers",
-    blurb: "Faculty advisors and teachers guiding research and projects.",
+    blurb: "Teachers and faculty advisors.",
     members: people.filter((person) => teacherGroups.has(person.group)),
   },
   {
     id: "bachelor",
     title: "Bachelor students",
-    blurb: "Student researchers building papers, systems and exhibitions.",
+    blurb: "Student researchers and collaborators.",
     members: people.filter((person) => !teacherGroups.has(person.group)),
   },
 ];
@@ -164,7 +211,7 @@ export default function PeoplePage() {
       <PageHeader
         eyebrow="People"
         title="Laboratory members"
-        lead="Open a profile to see affiliation, author rank and research — one entry per work."
+        lead="Teachers first, then students — open affiliation and projects when you need them."
       />
 
       <Section className="py-10 md:py-14">
@@ -236,37 +283,57 @@ export default function PeoplePage() {
   );
 }
 
+function PersonAvatar({
+  name,
+  photo,
+  id,
+  size = 56,
+}: {
+  name: string;
+  photo?: string;
+  id: string;
+  size?: number;
+}) {
+  const hue = seededValue(id);
+  const angle = Math.round(120 + hue * 110);
+  return (
+    <span
+      className="relative shrink-0 overflow-hidden rounded-full border border-[var(--border)]"
+      style={{ width: size, height: size }}
+    >
+      {photo ? (
+        <Image
+          src={photo}
+          alt=""
+          width={size}
+          height={size}
+          sizes={`${size}px`}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <span
+          aria-hidden
+          className="flex h-full w-full items-center justify-center font-semibold text-white"
+          style={{
+            fontSize: size > 40 ? "0.75rem" : "0.58rem",
+            backgroundImage: `linear-gradient(${angle}deg, #0B1F3A 0%, #133055 55%, #00A86B 145%)`,
+          }}
+        >
+          {initials(name)}
+        </span>
+      )}
+    </span>
+  );
+}
+
 function PersonRow({ person, entries }: { person: Person; entries: MemberEntry[] }) {
   const href = person.links.linkedin;
-  const hue = seededValue(person.id);
-  const angle = Math.round(120 + hue * 110);
   const workCount = entries.length;
 
   return (
     <li className="border-b border-[var(--border)] py-4 first:pt-0 last:border-b-0">
       <div className="flex items-start gap-4">
-        <span className="relative mt-0.5 h-14 w-14 shrink-0 overflow-hidden rounded-full">
-          {person.photo ? (
-            <Image
-              src={person.photo}
-              alt=""
-              width={56}
-              height={56}
-              sizes="56px"
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <span
-              aria-hidden
-              className="flex h-full w-full items-center justify-center text-[0.75rem] font-semibold text-white"
-              style={{
-                backgroundImage: `linear-gradient(${angle}deg, #0B1F3A 0%, #133055 55%, #00A86B 145%)`,
-              }}
-            >
-              {initials(person.name)}
-            </span>
-          )}
-        </span>
+        <PersonAvatar name={person.name} photo={person.photo} id={person.id} />
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2.5">
@@ -291,11 +358,12 @@ function PersonRow({ person, entries }: { person: Person; entries: MemberEntry[]
           </p>
 
           <details className="group mt-3">
-            <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-full border px-3 py-1.5 text-[0.72rem] font-medium transition-colors group-open:border-emerald-nrl [&::-webkit-details-marker]:hidden"
+            <summary
+              className="hover:border-emerald-nrl inline-flex cursor-pointer list-none items-center gap-1.5 rounded-full border px-3 py-1.5 text-[0.72rem] font-medium transition-colors group-open:border-emerald-nrl [&::-webkit-details-marker]:hidden"
               style={{ color: "var(--text-strong)" }}
             >
-              <span className="group-open:hidden">View profile</span>
-              <span className="hidden group-open:inline">Hide profile</span>
+              <span className="group-open:hidden">View affiliation · projects</span>
+              <span className="hidden group-open:inline">Hide</span>
               <svg
                 aria-hidden
                 viewBox="0 0 20 20"
@@ -308,84 +376,92 @@ function PersonRow({ person, entries }: { person: Person; entries: MemberEntry[]
               </svg>
             </summary>
 
-            <div className="mt-4">
-              <p className="text-[0.9rem] leading-relaxed" style={{ color: "var(--text-body)" }}>
+            <div className="mt-4 space-y-3">
+              <p className="text-[0.86rem] leading-relaxed" style={{ color: "var(--text-body)" }}>
                 {person.bio}
               </p>
-
-              {person.interests.length > 0 && (
-                <p className="mt-2 text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
-                  <span className="font-semibold" style={{ color: "var(--text-strong)" }}>
-                    Focus:{" "}
-                  </span>
-                  {person.interests.join(" · ")}
-                </p>
-              )}
+              <p className="text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
+                <span className="font-semibold" style={{ color: "var(--text-strong)" }}>
+                  Affiliation:{" "}
+                </span>
+                {person.affiliation}
+                {person.association ? ` · ${person.association}` : ""}
+              </p>
 
               {entries.length > 0 && (
-                <div className="mt-4">
+                <div className="mt-2">
                   <p
                     className="text-[0.65rem] font-semibold uppercase tracking-[0.14em]"
                     style={{ color: "var(--text-muted)" }}
                   >
-                    Research & work
+                    Projects
                   </p>
                   <ul className="mt-2 space-y-4">
                     {entries.map((entry) => (
                       <li key={entry.id}>
                         <Link
                           href={entry.href}
-                          className="link-underline text-[0.92rem] font-semibold leading-snug"
+                          className="link-underline text-[0.9rem] font-semibold leading-snug"
                           style={{ color: "var(--text-strong)" }}
                         >
                           {entry.title}
                         </Link>
-                        <p className="mt-1 text-[0.78rem]" style={{ color: "var(--text-muted)" }}>
+                        <p className="mt-1 text-[0.75rem]" style={{ color: "var(--text-muted)" }}>
                           {[entry.credit, entry.status, entry.venue, entry.year]
                             .filter(Boolean)
                             .join(" · ")}
                         </p>
-                        <p
-                          className="mt-1.5 text-[0.84rem] leading-relaxed"
-                          style={{ color: "var(--text-body)" }}
-                        >
-                          {entry.detail}
-                        </p>
-                        {(entry.pdf || entry.demo || entry.github) && (
-                          <p className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[0.78rem]">
-                            {entry.pdf && (
-                              <a
-                                href={entry.pdf}
-                                download
-                                className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
-                                style={{ color: "var(--text-strong)" }}
-                              >
-                                PDF
-                              </a>
-                            )}
-                            {entry.demo && (
-                              <a
-                                href={entry.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
-                                style={{ color: "var(--text-strong)" }}
-                              >
-                                Live demo
-                              </a>
-                            )}
-                            {entry.github && (
-                              <a
-                                href={entry.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-emerald-deep dark:hover:text-emerald-soft font-medium underline-offset-2 hover:underline"
-                                style={{ color: "var(--text-strong)" }}
-                              >
-                                GitHub
-                              </a>
-                            )}
-                          </p>
+                        {entry.authors.length > 0 && (
+                          <ul className="mt-2 flex flex-wrap gap-2">
+                            {entry.authors.map((author) => {
+                              const chip = (
+                                <>
+                                  <PersonAvatar
+                                    name={author.name}
+                                    photo={author.photo}
+                                    id={author.id}
+                                    size={36}
+                                  />
+                                  <span className="min-w-0">
+                                    <span className="block truncate text-[0.72rem] font-semibold leading-tight">
+                                      {author.name}
+                                    </span>
+                                    {author.rank && (
+                                      <span
+                                        className="block text-[0.62rem]"
+                                        style={{ color: "var(--text-muted)" }}
+                                      >
+                                        {author.rank}
+                                      </span>
+                                    )}
+                                  </span>
+                                </>
+                              );
+                              return (
+                                <li key={`${entry.id}-${author.id}`}>
+                                  {author.linkedin ? (
+                                    <a
+                                      href={author.linkedin}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      title={`${author.name} on LinkedIn`}
+                                      className="hover:border-emerald-nrl inline-flex max-w-[10.5rem] items-center gap-2 rounded-full border py-1 pr-2.5 pl-1 transition-colors"
+                                      style={{ color: "var(--text-strong)" }}
+                                    >
+                                      {chip}
+                                    </a>
+                                  ) : (
+                                    <span
+                                      className="inline-flex max-w-[10.5rem] items-center gap-2 rounded-full border py-1 pr-2.5 pl-1"
+                                      style={{ color: "var(--text-strong)" }}
+                                    >
+                                      {chip}
+                                    </span>
+                                  )}
+                                </li>
+                              );
+                            })}
+                          </ul>
                         )}
                       </li>
                     ))}
